@@ -9,7 +9,7 @@ import com.ssafy.ssaign.R
 import com.ssafy.ssaign.databinding.ActivitySplashBinding
 import com.ssafy.ssaign.src.main.MainActivity
 
-class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
+class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     private val DELAY = 500 // 원하는 값으로 설정
 
     override fun onCreate(savedInstanceState: Bundle?) {

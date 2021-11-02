@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2911458333333333" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/drawable/outline_arrow_back_24.xml" value="0.2911458333333333" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/drawable/outline_keyboard_double_arrow_down_20.xml" value="0.2911458333333333" />
         <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/layout/activity_main.xml" value="0.3260416666666667" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/layout/activity_splash.xml" value="0.3260416666666667" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/layout/fragment_main.xml" value="0.3260416666666667" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/layout/fragment_make_report.xml" value="0.75" />
+        <entry key="..\:/SSAFY/workspace/java/kotlin-ssaign-project/app/src/main/res/layout/fragment_user_info.xml" value="0.33" />
         <entry key="..\:/Users/SSAFY/GitHub/kotlin-ssaign-project/app/src/main/res/layout/activity_main.xml" value="0.26766304347826086" />
         <entry key="..\:/Users/SSAFY/GitHub/kotlin-ssaign-project/app/src/main/res/layout/activity_splash.xml" value="0.26766304347826086" />
       </map>
