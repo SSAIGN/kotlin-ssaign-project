@@ -9,16 +9,18 @@
 
 
 ## Application UI Proposal
-![image](./images/01_Main.png)   
+<img src="/images/01_Main.png" width="200" height="400"/>     
 Main Fragment
 
-![image](./images/02_최초실행.png)
+<img src="./images/02_최초실행.png" width="200" height="400"/>
 UserInfo Fragment
 
-![image](./images/03_서명창.png)
+
+<img src="./images/03_서명창.png" width="200" height="400"/>
 MakeSign Fragment
 
-![image](./images/04_서명%20불러오기.png)
+
+<img src="./images/04_서명%20불러오기.png" width="200" height="400"/>
 MakeSign Fragment(SignList)
 
 ## License Information
