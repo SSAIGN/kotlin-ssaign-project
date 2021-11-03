@@ -4,8 +4,7 @@ import android.os.Bundle
 import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.databinding.ActivityMainBinding
-import com.ssafy.ssaign.src.main.Fragment.MakeReportFragment
-import com.ssafy.ssaign.src.main.Fragment.UserInfoFragment
+import com.ssafy.ssaign.src.main.report.MakeReportFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
