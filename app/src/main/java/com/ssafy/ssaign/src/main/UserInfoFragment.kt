@@ -1,4 +1,4 @@
-package com.ssafy.ssaign.src.main.Fragment
+package com.ssafy.ssaign.src.main
 
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.BaseFragment

@@ -1,4 +1,4 @@
-package com.ssafy.ssaign.src.main.Fragment
+package com.ssafy.ssaign.src.main.report
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
