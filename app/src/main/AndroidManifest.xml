@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ssafy.ssaign">
 
-    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> /> -->
-
     <application
         android:name=".config.ApplicationClass"
         android:allowBackup="false"
@@ -14,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SSAIGN">
         <activity
+            android:name=".src.main.mypage.MyPageActivity"
+            android:exported="true" />
+        <activity
             android:name=".src.splash.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".src.main.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
