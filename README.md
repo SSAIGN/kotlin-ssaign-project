@@ -1,5 +1,30 @@
-# kotlin-ssaign-project
-삼성 청년 SW 아카데미(SSAFY) 교육지원금 서명 앱 프로젝트
+<div align="center">
+  
+  ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1&height=300&section=header&text=SSAIGN&fontSize=90&fontAlignY=35&desc=삼성%20청년%20SW%20아카데미%20(SSAFY)%20교육지원금%20서명%20앱%20프로젝트&descAlignY=60)
+  
+</div>
+ 
+ 
+ ## 👋 **Member**
+
+<table align="center" style="font-weight : bold">
+    <tr>
+        <td align="center">
+            <a href="https://github.com/Jueundev">                 
+                <img alt="최주은" src="https://avatars.githubusercontent.com/Jueundev" width="200" />            
+            </a>
+        </td>
+              <td align="center">
+            <a href="https://github.com/Jueundev">                 
+                <img alt="김주환" src="https://avatars.githubusercontent.com/juhwankim-dev" width="200" />            
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">최주은</td>
+        <td align="center">김주환</td>
+    </tr>
+</table>
 
 ## Samsung Software Academy For Youth 🧡 (Description)
 해당 앱은 삼성 청년 소프트웨어 아카데미(SSAFY) 교육지원금 서명 앱을 위한 어플리케이션 입니다.
