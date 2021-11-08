@@ -15,7 +15,7 @@
             </a>
         </td>
               <td align="center">
-            <a href="https://github.com/Jueundev">                 
+            <a href="https://github.com/juhwankim-dev">                 
                 <img alt="김주환" src="https://avatars.githubusercontent.com/juhwankim-dev" width="200" />            
             </a>
         </td>
