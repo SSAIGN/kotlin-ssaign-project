@@ -5,7 +5,7 @@
 </div>
  
  
- ## 👋 **Member**
+ ## **Member**
 
 <table align="center" style="font-weight : bold">
     <tr>
