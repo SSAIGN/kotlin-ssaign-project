@@ -34,9 +34,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/submitMonthTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="월"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,9 +55,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/studyTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="총수업일"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,9 +87,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/submitDayTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="일"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -102,9 +108,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/attendanceTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="총 출석일"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,7 +151,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/makeSignBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_bold"
@@ -175,9 +183,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/monthTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="달 (10월 1일 서명 -> 9월로 기입)"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,6 +212,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="이름"
@@ -214,7 +225,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/noto_sans_bold"
-            android:text="지역 / 반(숫자만)"
+            android:text="지역 / 반"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
@@ -230,6 +241,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/regionTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="지역"
@@ -249,9 +261,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/classNumTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="반"
+                android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
