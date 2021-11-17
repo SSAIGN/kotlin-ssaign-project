@@ -12,4 +12,18 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
         super.onViewCreated(view, savedInstanceState)
 
     }
+
+    fun initView() {
+
+    }
+
+    fun initEvent() {
+        binding.fragmentSignConfirmIvCancel.setOnClickListener {
+
+        }
+
+        binding.fragmentSignConfirmBtnSave.setOnClickListener {
+
+        }
+    }
 }
