@@ -1,6 +1,7 @@
 package com.ssafy.ssaign.config
 
 import android.app.Application
+import com.ssafy.ssaign.src.main.sign.db.SignDatabase
 import com.ssafy.ssaign.util.SharedPreferencesUtil
 
 class ApplicationClass : Application() {
@@ -11,11 +12,16 @@ class ApplicationClass : Application() {
         lateinit var sSharedPreferences: SharedPreferencesUtil
 
         const val SHARED_PREFERENCES_NAME = "SSAFY_APP"
+
+        // 싸인 저장 db
+        lateinit var db: SignDatabase
     }
 
     override fun onCreate() {
         super.onCreate()
 
         sSharedPreferences = SharedPreferencesUtil(applicationContext)
+
+        db = SignDatabase.getInstance(applicationContext)!!
     }
 }
