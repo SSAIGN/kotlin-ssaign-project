@@ -9,7 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import com.ssafy.ssaign.src.main.sign.model.Point
 
-class DrawSample : View {
+class DrawSign : View {
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) { }
 
     var list = arrayListOf<Point>()
@@ -54,5 +54,10 @@ class DrawSample : View {
 
     fun getSign() : ArrayList<Point> {
         return list;
+    }
+
+    fun setSign(sign: List<Point>) {
+        list.addAll(sign)
+        invalidate()
     }
 }

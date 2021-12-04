@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.SignConfirmFragment">
+    android:background="@color/white"
+    tools:context=".src.main.signconfirm.SignConfirmFragment">
 
     <ImageView
         android:id="@+id/fragment_sign_confirm_ivCancel"
@@ -32,7 +33,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_sign_confirm_ivCancel"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/img_sign_paper_base" />
+
+    <include
+        android:id="@+id/sign_include"
+        layout="@layout/included_sign"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_sign_confirm_iv_preview"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_iv_preview"/>
 
     <Button
         android:id="@+id/fragment_sign_confirm_btn_save"
