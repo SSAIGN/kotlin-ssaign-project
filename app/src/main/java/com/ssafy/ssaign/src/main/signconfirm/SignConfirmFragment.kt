@@ -37,7 +37,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
         super.onViewCreated(view, savedInstanceState)
 
 
-        draw = binding.signInclude.includedSignDraw
+        draw = binding.fragmentSignConfirmDraw
 
         initView()
         initEvent()
@@ -46,9 +46,8 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
     fun initView() {
         CoroutineScope(Dispatchers.Main).launch {
             val sign = CoroutineScope(Dispatchers.Default).async {
-                db.signDao().selectSign("8")
-                //val list = db.signDao().selectAllSign()
-                //list[list.lastIndex]
+                val list = db.signDao().selectAllSign()
+                list[list.lastIndex]
             }.await()
 
             if(sign != null) {
@@ -57,6 +56,37 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             } else {
                 //showToastMessage("싸인 불러오기 실패")
             }
+        }
+
+        setUserInfo()
+    }
+
+    fun setUserInfo() {
+        val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
+
+        val sdfYear = SimpleDateFormat("yyyy")
+        val sdfMonth = SimpleDateFormat("MM")
+        val sdfDay = SimpleDateFormat("dd")
+
+        val name = "김주환"
+        val year = sdfYear.format(time)
+        val month = sdfMonth.format(time).toInt().toString() // 앞의 '0'을 지워주기 위해
+        var day = sdfDay.format(time).toInt().toString() // string -> int -> string
+
+        binding.apply {
+            fragmentSignConfirmTvYear.text = year
+            fragmentSignConfirmTvMonth1.text = month
+            fragmentSignConfirmTvMonth2.text = month
+            fragmentSignConfirmTvMonth3.text = month
+            fragmentSignConfirmTvMonth4.text = month
+            fragmentSignConfirmTvDay.text = day
+            fragmentSignConfirmTvCampus.text = "구미"
+            fragmentSignConfirmTvClass.text = "6"
+            fragmentSignConfirmTvName1.text = name
+            fragmentSignConfirmTvName2.text = name
+            fragmentSignConfirmTvName3.text = name
+            fragmentSignConfirmTvClassDay.text = "20"
+            fragmentSignConfirmTvAttendDay.text = "19"
         }
     }
 
@@ -71,7 +101,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
             val current_time = sdf.format(time) //String형 변수에 저장
 
-            //Request_Capture(binding.testLayout, current_time + "_capture");
+            Request_Capture(binding.fragmentSignConfirmDocument, current_time + "_capture");
         }
     }
 
@@ -96,7 +126,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             Environment.getExternalStorageDirectory().absolutePath + "/DCIM/Camera/" //저장 경로 (String Type 변수)
         try {
             val fos = FileOutputStream("$Str_Path$title.jpg") // 경로 + 제목 + .jpg로 FileOutputStream Setting
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fos)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos) // 파일 압축 (압축률 설정 1~100)
         } catch (e: Exception) {
             e.printStackTrace()
         }

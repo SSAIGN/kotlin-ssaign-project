@@ -25,23 +25,284 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/fragment_sign_confirm_iv_preview"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_sign_confirm_ivCancel"
-        android:src="@drawable/img_sign_paper_base" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_sign_confirm_document"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_sign_confirm_btn_save"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sign_confirm_page_tv1">
 
-    <include
-        android:id="@+id/sign_include"
-        layout="@layout/included_sign"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_sign_confirm_iv_preview"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_iv_preview"/>
+        <ImageView
+            android:id="@+id/fragment_sign_confirm_ivPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_sign_paper_base"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <com.ssafy.ssaign.src.main.sign.DrawSign
+            android:id="@+id/fragment_sign_confirm_draw"
+            android:layout_width="68dp"
+            android:layout_height="35dp"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline56"
+            app:layout_constraintEnd_toEndOf="@id/guideline14"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvMonth1"
+            style="@style/document_text"
+            android:text="12"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline6"
+            app:layout_constraintBottom_toBottomOf="@id/guideline50"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvCampus"
+            style="@style/document_text"
+            android:text="구미"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintBottom_toBottomOf="@id/guideline51"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvClass"
+            style="@style/document_text"
+            android:text="6"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_tvCampus"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvName1"
+            style="@style/document_text"
+            android:text="김주환"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintEnd_toEndOf="@+id/guideline14"
+            app:layout_constraintTop_toTopOf="@+id/fragment_sign_confirm_tvCampus" />
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvName2"
+            style="@style/document_text"
+            android:text="김주환"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintBottom_toBottomOf="@id/guideline52"/>
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvMonth2"
+            android:text="12"
+            android:textStyle="bold"
+            android:layout_marginEnd="3dp"
+            app:layout_constraintEnd_toEndOf="@id/guideline4"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_sign_confirm_tvName2"/>
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvClassDay"
+            android:text="22"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/guideline7"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_sign_confirm_tvMonth2"/>
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvAttendDay"
+            android:text="20"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintEnd_toEndOf="@id/guideline12"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_sign_confirm_tvName2"/>
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvMonth3"
+            android:text="12"
+            app:layout_constraintEnd_toEndOf="@+id/guideline2"
+            app:layout_constraintBottom_toBottomOf="@id/guideline53"/>
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvYear"
+            android:text="2021"
+            app:layout_constraintEnd_toEndOf="@id/guideline9"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_sign_confirm_tvMonth4"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvMonth4"
+            style="@style/document_text"
+            android:text="12"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_tvDay"
+            app:layout_constraintEnd_toEndOf="@id/guideline11" />
+
+        <TextView
+            style="@style/document_text"
+            android:id="@+id/fragment_sign_confirm_tvDay"
+            android:text="14"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline54"
+            app:layout_constraintEnd_toEndOf="@id/guideline13"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_confirm_tvName3"
+            style="@style/document_text"
+            android:text="김주환"
+            app:layout_constraintBottom_toBottomOf="@id/guideline55"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintEnd_toEndOf="@id/guideline11"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.248" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.29" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.40" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.57" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.617" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.73" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.755" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.83" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.99" />
+
+
+
+        <!-- 가로 Guildline 시작 -->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.09" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.239" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.379" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.682" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline54"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.806" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline56"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.97" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/fragment_sign_confirm_btn_save"
@@ -52,4 +313,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
