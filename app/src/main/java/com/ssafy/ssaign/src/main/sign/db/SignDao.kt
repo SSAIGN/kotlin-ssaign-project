@@ -13,4 +13,7 @@ interface SignDao {
 
     @Query("SELECT * FROM Sign WHERE id = :id")
     fun selectSign(id: String): Sign
+
+    @Query("SELECT * FROM Sign")
+    fun selectAllSign(): List<Sign>
 }

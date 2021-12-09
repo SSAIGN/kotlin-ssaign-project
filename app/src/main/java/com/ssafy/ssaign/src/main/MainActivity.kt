@@ -5,6 +5,8 @@ import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.databinding.ActivityMainBinding
 import com.ssafy.ssaign.src.main.report.MakeReportFragment
+import com.ssafy.ssaign.src.main.sign.SignFragment
+import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +24,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         //임시로 한 것
 
         if(currentFragment == null){
-            val fragment = UserInfoFragment()
+            val fragment = SignFragment()
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container,fragment)
+                .add(R.id.fragment_container, fragment)
                 .commit()
         }
     }
@@ -37,9 +39,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 .replace(R.id.fragment_container, UserInfoFragment())
                 .addToBackStack(null)
                 .commit()
-            2-> supportFragmentManager
+            2 -> supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container, MakeReportFragment())
+                .addToBackStack(null)
+                .commit()
+            3 -> supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, SignFragment())
+                .addToBackStack(null)
+                .commit()
+            4 -> supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, SignConfirmFragment())
                 .addToBackStack(null)
                 .commit()
         }
