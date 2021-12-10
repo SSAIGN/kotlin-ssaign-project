@@ -1,7 +1,13 @@
 package com.ssafy.ssaign.config
 
 import android.app.Application
+import android.content.Context
+import com.ssafy.ssaign.src.main.sign.db.SignDatabase
 import com.ssafy.ssaign.util.SharedPreferencesUtil
+import android.util.DisplayMetrics
+import android.view.Display
+import android.view.WindowManager
+
 
 class ApplicationClass : Application() {
 
@@ -11,11 +17,28 @@ class ApplicationClass : Application() {
         lateinit var sSharedPreferences: SharedPreferencesUtil
 
         const val SHARED_PREFERENCES_NAME = "SSAFY_APP"
+
+        // 싸인 저장 db
+        lateinit var db: SignDatabase
+
+        var dpHeight = 0.0F
+        var dpWidth = 0.0F
     }
 
     override fun onCreate() {
         super.onCreate()
 
         sSharedPreferences = SharedPreferencesUtil(applicationContext)
+
+        db = SignDatabase.getInstance(applicationContext)!!
+
+        val windowManager = applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = windowManager.defaultDisplay
+        val outMetrics = DisplayMetrics()
+        display.getMetrics(outMetrics)
+
+        val density = resources.displayMetrics.density
+        dpHeight = outMetrics.heightPixels / density
+        dpWidth = outMetrics.widthPixels / density
     }
 }

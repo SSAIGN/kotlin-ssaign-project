@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.SignFragment">
+    tools:context=".src.main.sign.SignFragment">
 
     <ImageView
         android:id="@+id/fragment_sign_iv_delete"
@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black"
-        tools:src="@drawable/ic_sign_delete_btn" />
+        android:src="@drawable/ic_sign_delete_btn" />
 
     <ImageView
         android:id="@+id/fragment_sign_iv_save"
@@ -24,12 +24,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black"
-        tools:src="@drawable/ic_sign_save_btn" />
+        android:src="@drawable/ic_sign_save_btn" />
 
     <View
+        android:id="@+id/fragment_sign_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black_low_emphasis"
         app:layout_constraintTop_toBottomOf="@+id/fragment_sign_iv_delete"
         app:layout_constraintEnd_toStartOf="@+id/fragment_sign_iv_delete" />
+
+    <com.ssafy.ssaign.src.main.sign.DrawSign
+        android:id="@+id/draw"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_sign_line" />
 </androidx.constraintlayout.widget.ConstraintLayout>

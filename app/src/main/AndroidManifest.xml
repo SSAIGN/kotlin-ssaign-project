@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ssafy.ssaign">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".config.ApplicationClass"
         android:allowBackup="false"
@@ -10,9 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSAIGN">
-        <activity
-            android:name=".src.main.mypage.MyPageActivity"
-            android:exported="true" />
         <activity
             android:name=".src.splash.SplashActivity"
             android:exported="true">

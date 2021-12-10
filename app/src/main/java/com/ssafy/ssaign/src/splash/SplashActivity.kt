@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.room.Room
 import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.databinding.ActivitySplashBinding
