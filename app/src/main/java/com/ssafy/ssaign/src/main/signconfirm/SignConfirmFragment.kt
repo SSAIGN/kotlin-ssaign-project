@@ -20,11 +20,12 @@ import java.io.FileOutputStream
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
-
+import com.ssafy.ssaign.src.main.MainViewModel
 
 // 서명 확인창
 class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSignConfirmBinding::bind, R.layout.fragment_sign_confirm) {
     lateinit var draw: DrawSign
+    private lateinit var viewModel: MainViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -35,23 +36,23 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         draw = binding.fragmentSignConfirmDraw
+
         initView()
         initEvent()
     }
 
     fun initView() {
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
         CoroutineScope(Dispatchers.Main).launch {
             val sign = CoroutineScope(Dispatchers.Default).async {
-                val list = db.signDao().selectAllSign()
-                list[list.lastIndex]
+                db.signDao().selectSign("1")
             }.await()
 
             if(sign != null) {
                 draw.setSign(sign.point)
-                //showToastMessage("싸인 불러오기 성공")
-            } else {
-                //showToastMessage("싸인 불러오기 실패")
             }
         }
 
@@ -62,33 +63,29 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
         val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
 
         val sdfYear = SimpleDateFormat("yyyy")
-        val sdfMonth = SimpleDateFormat("MM")
-        val sdfDay = SimpleDateFormat("dd")
-
-        val name = "김주환"
         val year = sdfYear.format(time)
-        val month = sdfMonth.format(time).toInt().toString() // 앞의 '0'을 지워주기 위해
-        var day = sdfDay.format(time).toInt().toString() // string -> int -> string
+        val document = viewModel.enteredDocument
 
         binding.apply {
             fragmentSignConfirmTvYear.text = year
-            fragmentSignConfirmTvMonth1.text = month
-            fragmentSignConfirmTvMonth2.text = month
-            fragmentSignConfirmTvMonth3.text = month
-            fragmentSignConfirmTvMonth4.text = month
-            fragmentSignConfirmTvDay.text = day
-            fragmentSignConfirmTvCampus.text = "구미"
-            fragmentSignConfirmTvClass.text = "6"
-            fragmentSignConfirmTvName1.text = name
-            fragmentSignConfirmTvName2.text = name
-            fragmentSignConfirmTvName3.text = name
-            fragmentSignConfirmTvClassDay.text = "20"
-            fragmentSignConfirmTvAttendDay.text = "19"
+            fragmentSignConfirmTvMonth1.text = document.month
+            fragmentSignConfirmTvMonth2.text = document.month
+            fragmentSignConfirmTvMonth3.text = document.month
+            fragmentSignConfirmTvMonth4.text = document.subMonth
+            fragmentSignConfirmTvDay.text = document.subDay
+            fragmentSignConfirmTvCampus.text = document.campus
+            fragmentSignConfirmTvClass.text = document.class_
+            fragmentSignConfirmTvName1.text = document.name
+            fragmentSignConfirmTvName2.text = document.name
+            fragmentSignConfirmTvName3.text = document.name
+            fragmentSignConfirmTvClassDay.text = document.classDay
+            fragmentSignConfirmTvAttendDay.text = document.attendDay
         }
     }
 
     fun initEvent() {
         binding.fragmentSignConfirmIvCancel.setOnClickListener {
+
         }
 
         binding.fragmentSignConfirmBtnSave.setOnClickListener {
@@ -96,6 +93,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             val sdf = SimpleDateFormat("yyyyMMddHHmmss") //년,월,일,시간 포멧 설정
             val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
             val current_time = sdf.format(time) //String형 변수에 저장
+
             Request_Capture(binding.fragmentSignConfirmDocument, current_time + "_capture");
         }
     }
@@ -107,18 +105,19 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             return
         }
 
-        /* 캡쳐 파일 저장 */view.buildDrawingCache() //캐시 비트 맵 만들기
+        /* 캡쳐 파일 저장 */
+        view.buildDrawingCache() //캐시 비트 맵 만들기
         val bitmap = view.drawingCache
 
         /* 저장할 폴더 Setting */
-        val uploadFolder = Environment.getExternalStoragePublicDirectory("/DCIM/Camera/") //저장 경로 (File Type형 변수)
+        val uploadFolder = Environment.getExternalStoragePublicDirectory("/Download/") //저장 경로 (File Type형 변수)
         if (!uploadFolder.exists()) { //만약 경로에 폴더가 없다면
-            uploadFolder.mkdir() //폴더 생성
+            uploadFolder.mkdirs() //폴더 생성
         }
 
         /* 파일 저장 */
         val Str_Path =
-            Environment.getExternalStorageDirectory().absolutePath + "/DCIM/Camera/" //저장 경로 (String Type 변수)
+            Environment.getExternalStorageDirectory().absolutePath + "/Download/" //저장 경로 (String Type 변수)
         try {
             val fos = FileOutputStream("$Str_Path$title.jpg") // 경로 + 제목 + .jpg로 FileOutputStream Setting
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos) // 파일 압축 (압축률 설정 1~100)

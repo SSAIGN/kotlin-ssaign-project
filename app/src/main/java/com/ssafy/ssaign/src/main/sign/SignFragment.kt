@@ -42,11 +42,18 @@ class SignFragment : BaseFragment<FragmentSignBinding>(FragmentSignBinding::bind
         binding.fragmentSignIvSave.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 val job = CoroutineScope(Dispatchers.Default).async {
-                    db.signDao().insertSign(Sign(0, draw.getSign()))
+                    if(db.signDao().selectSign("1") == null) {
+                        CoroutineScope(Dispatchers.Default).async {
+                            db.signDao().insertSign(Sign(1, draw.getSign()))
+                        }
+                    } else {
+                        CoroutineScope(Dispatchers.Default).async {
+                            db.signDao().updateSign(Sign(1, draw.getSign()))
+                        }
+                    }
                 }
 
                 job.join()
-                showToastMessage("저장 완료")
                 (context as MainActivity).onChangeFragement(4)
             }
         }
