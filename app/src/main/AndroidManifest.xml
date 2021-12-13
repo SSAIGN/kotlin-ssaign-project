@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SSAIGN">
         <activity
+            android:name=".src.main.permission.PermissionActivity"
+            android:exported="true" />
+        <activity
             android:name=".src.splash.SplashActivity"
             android:exported="true">
             <intent-filter>

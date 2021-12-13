@@ -2,6 +2,9 @@
     <string name="app_name">SSAIGN</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="permission_title">앱 이용을 위해\n아래 권한을 허용해 주세요.</string>
-    <string name="permission_content">사용자의 서명 정보를 저장하고 불러오는 기능과\n문서를 작성하여 사용자의 기기에 사진 파일로 저장하기 위해\n저장 공간 권한이 필요합니다.</string>
+    <string name="permission_title">앱 이용을 위해\n아래 권한을 허용해 주세요</string>
+    <string name="permission_content">사용자의 서명 정보를 저장하고 불러오는 기능과\n문서를 작성하여 사용자의 기기에 사진 파일로 저장하기 위해\n저장 공간 권한이 필요합니다</string>
+    <string name="permission_denied_title">권한을 허용하지 않으면\n앱을 사용하실 수 없습니다 😥</string>
+    <string name="permission_denied_title2">뒤로가기를 누르면 다시 권한을 설정할 수 있습니다</string>
+    <string name="permission_denied_content">권한 설정 팝업이 뜨지 않는다면\n앱 설정에 들어가서 권한을 직접 수정해 주세요</string>
 </resources>

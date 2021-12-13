@@ -5,7 +5,9 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.ListPopupWindow
 import android.widget.ScrollView
+import android.widget.Spinner
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
 import com.ssafy.ssaign.config.BaseFragment
@@ -18,6 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,6 +47,22 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
 
         binding.allClassCnt.adapter = dayAdapter
         binding.allStudyCnt.adapter = dayAdapter
+
+        applyPopupHeight(binding.submitMonth)
+    }
+
+    private fun applyPopupHeight(spinner: Spinner) {
+        try {
+            val popup = Spinner::class.java.getDeclaredField("mPopup")
+            popup.isAccessible = true
+
+            // 높이지정
+            val window = popup.get(spinner) as ListPopupWindow
+            window.height = 400
+        }
+        catch(ex: Exception) {
+            // 예외처리..
+        }
     }
 
     private fun initView() {
