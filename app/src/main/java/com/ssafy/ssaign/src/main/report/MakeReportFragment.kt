@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ScrollView
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
@@ -21,14 +22,28 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeReportBinding::bind, R.layout.fragment_make_report) {
-
     var hasSign = false
+    private val dataMonth = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
+    private val dataDay = arrayOf("1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","31일")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initSpinner()
         initView()
         initData()
         initListener()
+    }
+
+    private fun initSpinner() {
+        val dayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, dataDay)
+        val monthAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, dataMonth)
+
+        binding.submitDay.adapter = dayAdapter
+        binding.submitMonth.adapter = monthAdapter
+        binding.eduMonth.adapter = monthAdapter
+
+        binding.allClassCnt.adapter = dayAdapter
+        binding.allStudyCnt.adapter = dayAdapter
     }
 
     private fun initView() {
@@ -42,6 +57,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
             .setTitle("서명하기")
             .setMessage("대표 서명이 이미 있습니다. 그래도 새롭게 서명을 하시겠습니까?")
             .setPositiveButton("확인") { p0, p1 ->
+                savedoc()
                 (context as MainActivity).onChangeFragement(3)
             }
             .setNegativeButton("취소") { p0, p1 ->
@@ -53,14 +69,18 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     }
 
     private fun savedoc(){
-        val month = binding.monthTv.text.toString().trim()
+        val month = binding.eduMonth.selectedItem.toString().replace("월","").trim()
         val name = binding.nameTv.text.toString().trim()
         val region = binding.regionTv.text.toString().trim()
         val classNum = binding.classNumTv.text.toString().trim()
-        val totalAttendance = binding.attendanceTv.text.toString().trim()
-        val totalStudy = binding.studyTv.text.toString().trim()
-        val submitMonth = binding.submitMonthTv.text.toString().trim()
-        val submitDay = binding.submitDayTv.text.toString().trim()
+//        val totalAttendance = binding.attendanceTv.text.toString().trim()
+//        val totalStudy = binding.studyTv.text.toString().trim()
+//        val submitMonth = binding.submitMonthTv.text.toString().trim()
+//        val submitDay = binding.submitDayTv.text.toString().trim()
+        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","").trim()
+        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","").trim()
+        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","").trim()
+        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "").trim()
         viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
     }
 
@@ -98,14 +118,18 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     }
 
     private fun checkVaild() : Boolean{
-        val month = binding.monthTv.text.toString().trim()
+        val month = binding.eduMonth.selectedItem.toString().replace("월","").trim()
         val name = binding.nameTv.text.toString().trim()
         val region = binding.regionTv.text.toString().trim()
         val classNum = binding.classNumTv.text.toString().trim()
-        val totalAttendance = binding.attendanceTv.text.toString().trim()
-        val totalStudy = binding.studyTv.text.toString().trim()
-        val submitMonth = binding.submitMonthTv.text.toString().trim()
-        val submitDay = binding.submitDayTv.text.toString().trim()
+//        val totalAttendance = binding.attendanceTv.text.toString().trim()
+//        val totalStudy = binding.studyTv.text.toString().trim()
+//        val submitMonth = binding.submitMonthTv.text.toString().trim()
+//        val submitDay = binding.submitDayTv.text.toString().trim()
+        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","").trim()
+        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","").trim()
+        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","").trim()
+        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "").trim()
 
         val list = listOf(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
 
@@ -124,7 +148,11 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 nameTv.setText(user.name)
                 regionTv.setText(user.region)
                 classNumTv.setText(user.classNum)
-                monthTv.setText((SimpleDateFormat("M").format(Date()).toInt()-1).toString())
+
+                var m = SimpleDateFormat("M").format(Date()).toInt() - 2
+                if (m < 0) m = 11
+
+                eduMonth.setSelection(m)
             }
         }
 
