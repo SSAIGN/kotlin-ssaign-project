@@ -35,10 +35,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         draw = binding.fragmentSignConfirmDraw
-
         initView()
         initEvent()
     }
@@ -92,7 +89,6 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
     fun initEvent() {
         binding.fragmentSignConfirmIvCancel.setOnClickListener {
-
         }
 
         binding.fragmentSignConfirmBtnSave.setOnClickListener {
@@ -100,7 +96,6 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             val sdf = SimpleDateFormat("yyyyMMddHHmmss") //년,월,일,시간 포멧 설정
             val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
             val current_time = sdf.format(time) //String형 변수에 저장
-
             Request_Capture(binding.fragmentSignConfirmDocument, current_time + "_capture");
         }
     }
