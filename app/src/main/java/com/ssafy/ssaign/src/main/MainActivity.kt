@@ -2,6 +2,7 @@ package com.ssafy.ssaign.src.main
 
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.PreferenceUtil
@@ -16,6 +17,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         //초기 실행화면 설정
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        //viewModel 설정
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //sharedpreferences를 사용하여 정보를 가져온다.
         prefs = PreferenceUtil(this)
@@ -72,5 +75,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     companion object {
         lateinit var prefs: PreferenceUtil
+        lateinit var viewModel: MainViewModel
     }
 }

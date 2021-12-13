@@ -6,20 +6,17 @@ import android.graphics.Color
 import android.graphics.CornerPathEffect
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import com.ssafy.ssaign.config.ApplicationClass
 import com.ssafy.ssaign.config.ApplicationClass.Companion.dpHeight
-import com.ssafy.ssaign.config.ApplicationClass.Companion.dpWidth
 import com.ssafy.ssaign.src.main.sign.model.Point
 
 class DrawSign : View {
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) { }
 
     var list = arrayListOf<Point>()
-
     var paint: Paint
+
     init {
         paint = Paint()
         paint.strokeWidth = 14F

@@ -15,7 +15,6 @@ abstract class SignDatabase: RoomDatabase() {
 
     companion object {
         private var instance: SignDatabase? = null
-
         @Synchronized
         fun getInstance(context: Context): SignDatabase? {
             if(instance == null) {

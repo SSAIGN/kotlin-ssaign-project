@@ -9,8 +9,11 @@ import com.ssafy.ssaign.databinding.FragmentSignConfirmBinding
 import android.graphics.Bitmap
 
 import android.os.Environment
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
+import com.ssafy.ssaign.src.main.MainActivity
+import com.ssafy.ssaign.src.main.MainActivity.Companion.viewModel
 import com.ssafy.ssaign.src.main.sign.DrawSign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +28,7 @@ import com.ssafy.ssaign.src.main.MainViewModel
 // 서명 확인창
 class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSignConfirmBinding::bind, R.layout.fragment_sign_confirm) {
     lateinit var draw: DrawSign
-    private lateinit var viewModel: MainViewModel
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -44,8 +47,6 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
     }
 
     fun initView() {
-        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-
         CoroutineScope(Dispatchers.Main).launch {
             val sign = CoroutineScope(Dispatchers.Default).async {
                 db.signDao().selectSign("1")
@@ -116,8 +117,8 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
         }
 
         /* 파일 저장 */
-        val Str_Path =
-            Environment.getExternalStorageDirectory().absolutePath + "/Download/" //저장 경로 (String Type 변수)
+        val Str_Path = Environment.getExternalStorageDirectory().absolutePath + "/Download/" //저장 경로 (String Type 변수)
+        Log.d("제발",Str_Path)
         try {
             val fos = FileOutputStream("$Str_Path$title.jpg") // 경로 + 제목 + .jpg로 FileOutputStream Setting
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos) // 파일 압축 (압축률 설정 1~100)

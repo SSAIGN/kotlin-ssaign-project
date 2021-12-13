@@ -23,8 +23,7 @@ class UserInfoFragment : BaseFragment<FragmentUserInfoBinding>(FragmentUserInfoB
         val region = binding.userLocationEt.text.toString().trim()
         val classNum = binding.userClassEt.text.toString().trim()
 
-        // 입력값 유효성 검사 -> TODO 작성한 내용 한번 더 띄워주고 맞는지 확인
-        // TODO classNum을 드랍메뉴로 바꿀지?
+        // 입력값 유효성 검사
         if(name != "" && classNum != "" && region != "" ){
             prefs.setUser(name, region, classNum)
             showToastMessage("성공적으로 저장 되었습니다!")

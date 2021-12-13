@@ -3,10 +3,7 @@ package com.ssafy.ssaign.config
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflater) -> B) : AppCompatActivity() {

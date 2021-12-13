@@ -1,18 +1,18 @@
 package com.ssafy.ssaign.src.main.report
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.ScrollView
-import android.widget.Toast
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
 import com.ssafy.ssaign.config.BaseFragment
 import com.ssafy.ssaign.databinding.FragmentMakeReportBinding
+import com.ssafy.ssaign.src.main.Document
 import com.ssafy.ssaign.src.main.MainActivity
 import com.ssafy.ssaign.src.main.MainActivity.Companion.prefs
+import com.ssafy.ssaign.src.main.MainActivity.Companion.viewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -60,7 +60,16 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                     showToastMessage("대표 서명이 없습니다. 서명을 해주세요.")
                 }
                 else {
-                    (context as MainActivity).onChangeFragement(3)
+                    val month = binding.monthTv.text.toString().trim()
+                    val name = binding.nameTv.text.toString().trim()
+                    val region = binding.regionTv.text.toString().trim()
+                    val classNum = binding.classNumTv.text.toString().trim()
+                    val totalAttendance = binding.attendanceTv.text.toString().trim()
+                    val totalStudy = binding.studyTv.text.toString().trim()
+                    val submitMonth = binding.submitMonthTv.text.toString().trim()
+                    val submitDay = binding.submitDayTv.text.toString().trim()
+                    viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
+                    (context as MainActivity).onChangeFragement(4)
                 }
             }
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
