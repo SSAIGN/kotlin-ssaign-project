@@ -11,14 +11,12 @@ import android.view.View
 import com.ssafy.ssaign.config.ApplicationClass.Companion.dpHeight
 import com.ssafy.ssaign.src.main.sign.model.Point
 
-class DrawSign : View {
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) { }
-
+class DrawSign(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+    var isValid = true
     var list = arrayListOf<Point>()
-    var paint: Paint
+    var paint: Paint = Paint()
 
     init {
-        paint = Paint()
         paint.strokeWidth = 14F
         paint.color = Color.BLACK
 
@@ -42,18 +40,20 @@ class DrawSign : View {
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        when(event?.action){
-            MotionEvent.ACTION_DOWN -> {
-                list.add(Point(event?.x, event?.y, false))
+        if (isValid) {
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    list.add(Point(event?.x, event?.y, false))
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    list.add(Point(event?.x, event?.y, true))
+                }
+                MotionEvent.ACTION_UP -> {
+                    list.add(Point(event?.x, event?.y, true))
+                }
             }
-            MotionEvent.ACTION_MOVE -> {
-                list.add(Point(event?.x, event?.y, true))
-            }
-            MotionEvent.ACTION_UP -> {
-                list.add(Point(event?.x, event?.y, true))
-            }
+            invalidate() // onDraw를 호출함
         }
-        invalidate() // onDraw를 호출함
         return true
     }
 
