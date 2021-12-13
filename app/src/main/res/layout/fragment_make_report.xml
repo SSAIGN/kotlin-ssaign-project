@@ -85,7 +85,7 @@
                 <Spinner
                     android:id="@+id/edu_month"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="53dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
@@ -172,7 +172,7 @@
                     <Spinner
                         android:id="@+id/submit_month"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="53dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
@@ -182,7 +182,7 @@
                     <Spinner
                         android:id="@+id/submit_day"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="53dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
@@ -284,7 +284,7 @@
                     <Spinner
                         android:id="@+id/allStudyCnt"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="53dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
@@ -294,7 +294,7 @@
                     <Spinner
                         android:id="@+id/allClassCnt"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="53dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
