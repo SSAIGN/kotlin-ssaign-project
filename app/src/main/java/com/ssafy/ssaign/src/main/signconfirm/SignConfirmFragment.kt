@@ -48,15 +48,11 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
         CoroutineScope(Dispatchers.Main).launch {
             val sign = CoroutineScope(Dispatchers.Default).async {
-                val list = db.signDao().selectAllSign()
-                list[list.lastIndex]
+                db.signDao().selectSign("1")
             }.await()
 
             if(sign != null) {
                 draw.setSign(sign.point)
-                //showToastMessage("싸인 불러오기 성공")
-            } else {
-                //showToastMessage("싸인 불러오기 실패")
             }
         }
 
@@ -67,14 +63,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
         val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
 
         val sdfYear = SimpleDateFormat("yyyy")
-        val sdfMonth = SimpleDateFormat("MM")
-        val sdfDay = SimpleDateFormat("dd")
-
-        val name = "김주환"
         val year = sdfYear.format(time)
-        val month = sdfMonth.format(time).toInt().toString() // 앞의 '0'을 지워주기 위해
-        var day = sdfDay.format(time).toInt().toString() // string -> int -> string
-
         val document = viewModel.enteredDocument
 
         binding.apply {
