@@ -2,11 +2,10 @@ package com.ssafy.ssaign.config
 
 import android.app.Application
 import android.content.Context
+import android.util.DisplayMetrics
+import android.view.WindowManager
 import com.ssafy.ssaign.src.main.sign.db.SignDatabase
 import com.ssafy.ssaign.util.SharedPreferencesUtil
-import android.util.DisplayMetrics
-import android.view.Display
-import android.view.WindowManager
 
 
 class ApplicationClass : Application() {
@@ -15,7 +14,6 @@ class ApplicationClass : Application() {
     companion object {
         // 만들어져있는 SharedPreferences 를 사용해야합니다. 재생성하지 않도록 유념해주세요
         lateinit var sSharedPreferences: SharedPreferencesUtil
-
         const val SHARED_PREFERENCES_NAME = "SSAFY_APP"
 
         // 싸인 저장 db
@@ -27,16 +25,12 @@ class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         sSharedPreferences = SharedPreferencesUtil(applicationContext)
-
         db = SignDatabase.getInstance(applicationContext)!!
-
         val windowManager = applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = windowManager.defaultDisplay
         val outMetrics = DisplayMetrics()
         display.getMetrics(outMetrics)
-
         val density = resources.displayMetrics.density
         dpHeight = outMetrics.heightPixels / density
         dpWidth = outMetrics.widthPixels / density

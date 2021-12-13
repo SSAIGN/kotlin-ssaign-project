@@ -52,6 +52,18 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         msgDlg.show()
     }
 
+    private fun savedoc(){
+        val month = binding.monthTv.text.toString().trim()
+        val name = binding.nameTv.text.toString().trim()
+        val region = binding.regionTv.text.toString().trim()
+        val classNum = binding.classNumTv.text.toString().trim()
+        val totalAttendance = binding.attendanceTv.text.toString().trim()
+        val totalStudy = binding.studyTv.text.toString().trim()
+        val submitMonth = binding.submitMonthTv.text.toString().trim()
+        val submitDay = binding.submitDayTv.text.toString().trim()
+        viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
+    }
+
     private fun initListener() {
         binding.makeReportBtn.setOnClickListener {
             if(checkVaild()) {
@@ -60,15 +72,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                     showToastMessage("대표 서명이 없습니다. 서명을 해주세요.")
                 }
                 else {
-                    val month = binding.monthTv.text.toString().trim()
-                    val name = binding.nameTv.text.toString().trim()
-                    val region = binding.regionTv.text.toString().trim()
-                    val classNum = binding.classNumTv.text.toString().trim()
-                    val totalAttendance = binding.attendanceTv.text.toString().trim()
-                    val totalStudy = binding.studyTv.text.toString().trim()
-                    val submitMonth = binding.submitMonthTv.text.toString().trim()
-                    val submitDay = binding.submitDayTv.text.toString().trim()
-                    viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
+                    savedoc()
                     (context as MainActivity).onChangeFragement(4)
                 }
             }
@@ -77,9 +81,18 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         
         binding.signBtn.setOnClickListener {
             if (hasSign){
-                showDialog()
+                if(checkVaild()){
+                    showDialog()
+                }else{
+                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
+                }
             }else{
-                (context as MainActivity).onChangeFragement(3)
+                if(checkVaild()){
+                    savedoc()
+                    (context as MainActivity).onChangeFragement(3)
+                }else{
+                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
+                }
             }
         }
     }
