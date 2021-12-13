@@ -12,7 +12,7 @@ import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.PreferenceUtil
 import com.ssafy.ssaign.databinding.ActivityMainBinding
-import com.ssafy.ssaign.src.main.permission.PermissionFragment
+import com.ssafy.ssaign.src.main.permission.PermissionDeniedFragment
 import com.ssafy.ssaign.src.main.report.MakeReportFragment
 import com.ssafy.ssaign.src.main.sign.SignFragment
 import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
@@ -26,39 +26,52 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         //viewModel 설정
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        //초기 실행화면 설정
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
         prefs = PreferenceUtil(this)
 
-        if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            //sharedpreferences를 사용하여 정보를 가져온다.
-            val user = prefs.getUser()
-            Log.d("SSAIGN-MainActivity", user.toString())
-
-            //정보가 있다면 -> Viewmodel에 저장 -> MakeReportFramgent -> Report 생성
-            if(user != null){
-                if(currentFragment == null){
-                    val fragment = MakeReportFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.fragment_container,fragment)
-                        .commit()
-                }
-            }
-
-            //정보가 없다면 -> UserInfoFragment -> 정보 기입 -> Viewmodel에 저장 -> MakeReportFramgnet -> Report 생성
-            else{
-                if(currentFragment == null){
-                    val fragment = UserInfoFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .add(R.id.fragment_container,fragment)
-                        .commit()
-                }
-            }
+        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            initFragmentSetting()
         } else {
+            val permissionLauncher =
+                registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+                    if(isGranted) {
+                        initFragmentSetting()
+                    } else {
+                        showToastMessage("권한 허용이 필요합니다")
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, PermissionDeniedFragment())
+                            .addToBackStack(null)
+                            .commit()
+                    }
+                }
+            val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+            permissionLauncher.launch(permission)
+        }
+    }
+
+    fun initFragmentSetting() {
+        //초기 실행화면 설정
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+
+        //sharedpreferences를 사용하여 정보를 가져온다.
+        val user = prefs.getUser()
+        Log.d("SSAIGN-MainActivity", user.toString())
+
+        //정보가 있다면 -> Viewmodel에 저장 -> MakeReportFramgent -> Report 생성
+        if(user != null){
             if(currentFragment == null){
-                val fragment = PermissionFragment()
+                val fragment = MakeReportFragment()
+                supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.fragment_container,fragment)
+                    .commit()
+            }
+        }
+
+        //정보가 없다면 -> UserInfoFragment -> 정보 기입 -> Viewmodel에 저장 -> MakeReportFramgnet -> Report 생성
+        else{
+            if(currentFragment == null){
+                val fragment = UserInfoFragment()
                 supportFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container,fragment)
@@ -87,11 +100,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             4 -> supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container, SignConfirmFragment())
-                .addToBackStack(null)
-                .commit()
-            5 -> supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, PermissionFragment())
                 .addToBackStack(null)
                 .commit()
         }
