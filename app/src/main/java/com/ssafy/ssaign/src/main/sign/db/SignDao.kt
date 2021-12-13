@@ -3,7 +3,6 @@ package com.ssafy.ssaign.src.main.sign.db
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.ssafy.ssaign.src.main.sign.model.Point
 import com.ssafy.ssaign.src.main.sign.model.Sign
 
 @Dao
