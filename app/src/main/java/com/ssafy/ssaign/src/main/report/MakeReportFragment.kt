@@ -1,6 +1,7 @@
 package com.ssafy.ssaign.src.main.report
 
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import com.ssafy.ssaign.src.main.Document
 import com.ssafy.ssaign.src.main.MainActivity
 import com.ssafy.ssaign.src.main.MainActivity.Companion.prefs
 import com.ssafy.ssaign.src.main.MainActivity.Companion.viewModel
+import com.ssafy.ssaign.src.main.settings.SettingsActivity
 import com.ssafy.ssaign.src.main.sign.DrawSign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -111,6 +113,10 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 }
             }
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
+        }
+
+        binding.fragmentMakeReportIvSettings.setOnClickListener {
+            startActivity(Intent(context, SettingsActivity::class.java))
         }
     }
 

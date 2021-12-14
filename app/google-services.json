@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1048599463705",
+    "project_id": "ssaign",
+    "storage_bucket": "ssaign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048599463705:android:3a5b861c27ba2b48036788",
+        "android_client_info": {
+          "package_name": "com.ssafy.ssaign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048599463705-u6daen3oacpo6219li60h13h5k57np92.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.ssaign",
+            "certificate_hash": "17377d7603fa8ff40548baf2a293bed40d5c85e0"
+          }
+        },
+        {
+          "client_id": "1048599463705-nfd0v8qsuq60j467769nbkvorm8amfmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGkBJHKNALWzng06dpq8KkJ9mNF4SNCVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048599463705-nfd0v8qsuq60j467769nbkvorm8amfmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
