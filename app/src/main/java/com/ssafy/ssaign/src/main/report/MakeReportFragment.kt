@@ -1,10 +1,13 @@
 package com.ssafy.ssaign.src.main.report
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ScrollView
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
@@ -27,6 +30,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     var hasSign = false
     private val dataMonth = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
     private val dataDay = arrayOf("1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","31일")
+    lateinit var dialog:Dialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,25 +68,25 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     private fun initView() {
         // 세로 모드
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-        draw = binding.makeReportDraw
+
+        dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog01)
+
+        dialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
+            (context as MainActivity).onChangeFragement(3)
+            savedoc()
+            dialog.hide()
+        }
+
+        dialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
+            (context as MainActivity).onChangeFragement(4)
+            savedoc()
+            dialog.hide()
+        }
+
+        draw = dialog.findViewById(R.id.dialog_draw)
         draw.isValid = false
-    }
-
-    private fun showDialog()
-    {
-        val msgBuilder = AlertDialog.Builder(requireContext())
-            .setTitle("서명하기")
-            .setMessage("대표 서명이 이미 있습니다. 그래도 새롭게 서명을 하시겠습니까?")
-            .setPositiveButton("확인") { p0, p1 ->
-                savedoc()
-                (context as MainActivity).onChangeFragement(3)
-            }
-            .setNegativeButton("취소") { p0, p1 ->
-                showToastMessage("취소되었습니다.")
-            }
-
-        val msgDlg = msgBuilder.create()
-        msgDlg.show()
     }
 
     private fun savedoc(){
@@ -101,32 +105,14 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         binding.makeReportBtn.setOnClickListener {
             if(checkVaild()) {
                 if (!hasSign){
-                    binding.scrollview.fullScroll(ScrollView.FOCUS_DOWN)
-                    showToastMessage("대표 서명이 없습니다. 서명을 해주세요.")
-                }
-                else {
                     savedoc()
                     (context as MainActivity).onChangeFragement(4)
                 }
+                else {
+                    dialog.show()
+                }
             }
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
-        }
-        
-        binding.signBtn.setOnClickListener {
-            if (hasSign){
-                if(checkVaild()){
-                    showDialog()
-                }else{
-                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
-                }
-            }else{
-                if(checkVaild()){
-                    savedoc()
-                    (context as MainActivity).onChangeFragement(3)
-                }else{
-                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
-                }
-            }
         }
     }
 
