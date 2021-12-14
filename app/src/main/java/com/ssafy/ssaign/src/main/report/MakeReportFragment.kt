@@ -1,6 +1,5 @@
 package com.ssafy.ssaign.src.main.report
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ScrollView
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
 import com.ssafy.ssaign.config.BaseFragment
@@ -71,17 +69,17 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
 
         dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog01)
+        dialog.setContentView(R.layout.dialog_sign)
 
         dialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(3)
-            savedoc()
+            saveDoc()
             dialog.hide()
         }
 
         dialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(4)
-            savedoc()
+            saveDoc()
             dialog.hide()
         }
 
@@ -89,7 +87,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         draw.isValid = false
     }
 
-    private fun savedoc(){
+    private fun saveDoc(){
         val month = binding.eduMonth.selectedItem.toString().replace("월","")
         val name = binding.nameTv.text.toString()
         val region = binding.regionTv.text.toString()
@@ -105,7 +103,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         binding.makeReportBtn.setOnClickListener {
             if(checkVaild()) {
                 if (!hasSign){
-                    savedoc()
+                    saveDoc()
                     (context as MainActivity).onChangeFragement(4)
                 }
                 else {

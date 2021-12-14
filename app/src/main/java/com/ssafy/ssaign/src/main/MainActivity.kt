@@ -16,6 +16,10 @@ import com.ssafy.ssaign.src.main.permission.PermissionDeniedFragment
 import com.ssafy.ssaign.src.main.report.MakeReportFragment
 import com.ssafy.ssaign.src.main.sign.SignFragment
 import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
+import android.media.MediaScannerConnection
+
+
+
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
