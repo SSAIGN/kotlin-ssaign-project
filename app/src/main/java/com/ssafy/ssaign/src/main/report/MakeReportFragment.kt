@@ -86,14 +86,14 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     }
 
     private fun savedoc(){
-        val month = binding.eduMonth.selectedItem.toString().replace("월","").trim()
-        val name = binding.nameTv.text.toString().trim()
-        val region = binding.regionTv.text.toString().trim()
-        val classNum = binding.classNumTv.text.toString().trim()
-        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","").trim()
-        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","").trim()
-        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","").trim()
-        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "").trim()
+        val month = binding.eduMonth.selectedItem.toString().replace("월","")
+        val name = binding.nameTv.text.toString()
+        val region = binding.regionTv.text.toString()
+        val classNum = binding.classNumTv.text.toString()
+        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","")
+        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","")
+        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","")
+        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "")
         viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
     }
 
@@ -131,14 +131,14 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     }
 
     private fun checkVaild() : Boolean{
-        val month = binding.eduMonth.selectedItem.toString().replace("월","").trim()
-        val name = binding.nameTv.text.toString().trim()
-        val region = binding.regionTv.text.toString().trim()
-        val classNum = binding.classNumTv.text.toString().trim()
-        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","").trim()
-        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","").trim()
-        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","").trim()
-        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "").trim()
+        val month = binding.eduMonth.selectedItem.toString().replace("월","")
+        val name = binding.nameTv.text.toString()
+        val region = binding.regionTv.text.toString()
+        val classNum = binding.classNumTv.text.toString()
+        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","")
+        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","")
+        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","")
+        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "")
 
         val list = listOf(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
 
@@ -162,17 +162,6 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 if (m < 0) m = 11
 
                 eduMonth.setSelection(m)
-            }
-        }
-
-        // 서명 데이터가 있는지 확인
-        CoroutineScope(Dispatchers.Main).launch {
-            val sign = CoroutineScope(Dispatchers.Default).async {
-                db.signDao().selectSign("1")
-            }.await()
-            if (sign != null) {
-                hasSign = true
-                initSign()
             }
         }
     }
