@@ -1,6 +1,7 @@
 package com.ssafy.ssaign.src.main.report
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,7 @@ import com.ssafy.ssaign.src.main.Document
 import com.ssafy.ssaign.src.main.MainActivity
 import com.ssafy.ssaign.src.main.MainActivity.Companion.prefs
 import com.ssafy.ssaign.src.main.MainActivity.Companion.viewModel
+import com.ssafy.ssaign.src.main.settings.SettingsActivity
 import com.ssafy.ssaign.src.main.sign.DrawSign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeReportBinding::bind, R.layout.fragment_make_report) {
-    lateinit var draw: DrawSign
+    //lateinit var draw: DrawSign
     var hasSign = false
     private val dataMonth = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
     private val dataDay = arrayOf("1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","31일")
@@ -44,7 +46,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 }.await()
 
                 if(sign != null) {
-                    draw.setSign(sign.point)
+                    //draw.setSign(sign.point)
                 }
             }
         }
@@ -64,8 +66,8 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     private fun initView() {
         // 세로 모드
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-        draw = binding.makeReportDraw
-        draw.isValid = false
+        //draw = binding.makeReportDraw
+        //draw.isValid = false
     }
 
     private fun showDialog()
@@ -112,21 +114,8 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
         }
         
-        binding.signBtn.setOnClickListener {
-            if (hasSign){
-                if(checkVaild()){
-                    showDialog()
-                }else{
-                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
-                }
-            }else{
-                if(checkVaild()){
-                    savedoc()
-                    (context as MainActivity).onChangeFragement(3)
-                }else{
-                    showToastMessage("모든 정보를 기입 후, 서명해주세요.")
-                }
-            }
+        binding.fragmentMakeReportIvSettings.setOnClickListener {
+            startActivity(Intent(context, SettingsActivity::class.java))
         }
     }
 

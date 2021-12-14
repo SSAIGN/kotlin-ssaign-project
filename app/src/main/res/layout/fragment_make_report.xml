@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/fragment_make_report_ivSettings"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_settings" />
+
         <Button
             android:id="@+id/makeReportBtn"
             android:layout_width="match_parent"
@@ -28,7 +37,7 @@
             app:layout_constraintBottom_toTopOf="@+id/makeReportBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/fragment_make_report_ivSettings">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,23 +160,23 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/textInputLayout10"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="16dp"-->
-<!--                        android:layout_marginEnd="16dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:gravity="center">-->
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/submitMonthTv"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:hint="월"-->
-<!--                            android:inputType="number"-->
-<!--                            tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                    <!--                        android:id="@+id/textInputLayout10"-->
+                    <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="16dp"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:gravity="center">-->
+                    <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                    <!--                            android:id="@+id/submitMonthTv"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:hint="월"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            tools:ignore="SpeakableTextPresentCheck" />-->
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <Spinner
                         android:id="@+id/submit_month"
@@ -189,25 +198,25 @@
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/textInputLayout11"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="16dp"-->
-<!--                        android:layout_marginEnd="16dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:gravity="center">-->
+                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                    <!--                        android:id="@+id/textInputLayout11"-->
+                    <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="16dp"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:gravity="center">-->
 
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/submitDayTv"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:hint="일"-->
-<!--                            android:inputType="number"-->
-<!--                            tools:ignore="SpeakableTextPresentCheck" />-->
+                    <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                    <!--                            android:id="@+id/submitDayTv"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:hint="일"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            tools:ignore="SpeakableTextPresentCheck" />-->
 
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
                 </LinearLayout>
 
                 <TextView
@@ -301,94 +310,49 @@
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
                     <!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/textInputLayout8"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="16dp"-->
-<!--                        android:layout_marginEnd="16dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        app:layout_constraintEnd_toStartOf="@+id/guideline6"-->
-<!--                        app:layout_constraintHorizontal_bias="1.0"-->
-<!--                        app:layout_constraintStart_toStartOf="@+id/textView10"-->
-<!--                        tools:layout_editor_absoluteY="463dp">-->
+                    <!--                        android:id="@+id/textInputLayout8"-->
+                    <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="16dp"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        app:layout_constraintEnd_toStartOf="@+id/guideline6"-->
+                    <!--                        app:layout_constraintHorizontal_bias="1.0"-->
+                    <!--                        app:layout_constraintStart_toStartOf="@+id/textView10"-->
+                    <!--                        tools:layout_editor_absoluteY="463dp">-->
 
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/attendanceTv"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:hint="총 출석일"-->
-<!--                            android:inputType="number"-->
-<!--                            tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                    <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                    <!--                            android:id="@+id/attendanceTv"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:hint="총 출석일"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            tools:ignore="SpeakableTextPresentCheck" />-->
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/textInputLayout9"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="16dp"-->
-<!--                        android:layout_marginEnd="16dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.0"-->
-<!--                        app:layout_constraintStart_toStartOf="@+id/guideline6"-->
-<!--                        tools:layout_editor_absoluteY="463dp">-->
+                    <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                    <!--                        android:id="@+id/textInputLayout9"-->
+                    <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="16dp"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintHorizontal_bias="0.0"-->
+                    <!--                        app:layout_constraintStart_toStartOf="@+id/guideline6"-->
+                    <!--                        tools:layout_editor_absoluteY="463dp">-->
 
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/studyTv"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:hint="총 수업일"-->
-<!--                            android:inputType="number"-->
-<!--                            tools:ignore="SpeakableTextPresentCheck" />-->
+                    <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                    <!--                            android:id="@+id/studyTv"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:hint="총 수업일"-->
+                    <!--                            android:inputType="number"-->
+                    <!--                            tools:ignore="SpeakableTextPresentCheck" />-->
 
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/noto_sans_bold"
-                    android:text="서명"
-                    android:textSize="14sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/signBtn"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="서명하기" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/presentation_tv"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center" />
-
-                        <com.ssafy.ssaign.src.main.sign.DrawSign
-                            android:id="@+id/makeReportDraw"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="50dp"
-                            android:layout_marginEnd="50dp"
-                            android:layout_weight="0.5" />
-                    </LinearLayout>
-
+                    <!--                    </com.google.android.material.textfield.TextInputLayout>-->
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
