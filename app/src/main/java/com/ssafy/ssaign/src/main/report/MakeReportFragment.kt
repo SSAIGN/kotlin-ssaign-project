@@ -1,7 +1,5 @@
 package com.ssafy.ssaign.src.main.report
 
-import android.app.AlertDialog
-import android.content.Intent
 import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -9,7 +7,6 @@ import android.view.View
 import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ScrollView
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
 import com.ssafy.ssaign.config.BaseFragment
@@ -18,7 +15,6 @@ import com.ssafy.ssaign.src.main.Document
 import com.ssafy.ssaign.src.main.MainActivity
 import com.ssafy.ssaign.src.main.MainActivity.Companion.prefs
 import com.ssafy.ssaign.src.main.MainActivity.Companion.viewModel
-import com.ssafy.ssaign.src.main.settings.SettingsActivity
 import com.ssafy.ssaign.src.main.sign.DrawSign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeReportBinding::bind, R.layout.fragment_make_report) {
-    //lateinit var draw: DrawSign
+    lateinit var draw: DrawSign
     var hasSign = false
     private val dataMonth = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
     private val dataDay = arrayOf("1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","31일")
@@ -50,7 +46,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 }.await()
 
                 if(sign != null) {
-                    //draw.setSign(sign.point)
+                    draw.setSign(sign.point)
                 }
             }
         }
@@ -73,17 +69,17 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
 
         dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog01)
+        dialog.setContentView(R.layout.dialog_sign)
 
         dialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(3)
-            savedoc()
+            saveDoc()
             dialog.hide()
         }
 
         dialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(4)
-            savedoc()
+            saveDoc()
             dialog.hide()
         }
 
@@ -91,7 +87,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         draw.isValid = false
     }
 
-    private fun savedoc(){
+    private fun saveDoc(){
         val month = binding.eduMonth.selectedItem.toString().replace("월","")
         val name = binding.nameTv.text.toString()
         val region = binding.regionTv.text.toString()
@@ -117,7 +113,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
         }
     }
-    
+
     private fun checkVaild() : Boolean{
         val month = binding.eduMonth.selectedItem.toString().replace("월","")
         val name = binding.nameTv.text.toString()
