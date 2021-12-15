@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="달 (10월 1일 서명 -> 9월로 기입)"
-                        android:textAlignment="center" />
+                        android:textAlignment="viewEnd" />
                 </LinearLayout>
 
                 <Spinner
@@ -130,57 +130,6 @@
                         android:hint="이름"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:fontFamily="@font/noto_sans_bold"
-                        android:text="제출일 (월/일)" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="([총수업일] 중 지급일수는 [출석일]입니다.) "
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/fragment_make_report_spinnerSubMonth"
-                        android:layout_width="match_parent"
-                        android:layout_height="53dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/spinner_background"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                    <Spinner
-                        android:id="@+id/fragment_make_report_subDay"
-                        android:layout_width="match_parent"
-                        android:layout_height="53dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/spinner_background"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView10"
@@ -237,16 +186,31 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/noto_sans_bold"
-                    android:text="총수업일 / 출석일"
-                    app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:text="총수업일 / 출석일"
+                        app:layout_constraintStart_toStartOf="@+id/textInputLayout6"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="([총수업일] 중 지급일수는 [출석일]입니다.) "
+                        android:textAlignment="viewEnd"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -272,6 +236,59 @@
                         android:layout_weight="1"
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:text="제출일 (월/일)" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:text="제출 마감일을 적어주세요."
+                        android:textAlignment="viewEnd"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/fragment_make_report_spinnerSubMonth"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_background"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <Spinner
+                        android:id="@+id/fragment_make_report_subDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_background"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
                 </LinearLayout>
 
                 <LinearLayout
