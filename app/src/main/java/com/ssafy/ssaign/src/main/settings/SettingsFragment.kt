@@ -1,8 +1,10 @@
 package com.ssafy.ssaign.src.main.settings
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -75,6 +77,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         }
 
         binding.fragmentSettingsTvEditUser.setOnClickListener {
+            prefs.deleteUser()
             (context as SettingsActivity).finish()
         }
 
@@ -83,15 +86,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         }
 
         binding.fragmentSettingsTvDeveloper.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(2)
-        }
-
-        binding.fragmentSettingsTvVersion.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(3)
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/SSAIGN/kotlin-ssaign-project")))
         }
 
         binding.fragmentSettingsTvLicense.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(4)
+            (context as SettingsActivity).onChangeFragement(2)
         }
     }
 }

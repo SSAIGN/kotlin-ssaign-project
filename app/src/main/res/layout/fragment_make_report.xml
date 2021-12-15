@@ -60,7 +60,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="아래의 정보를 확인하고 서명까지 완료해주시면 파일을\n생성해드려요!"
+                    android:text="아래의 정보를 확인하고 서명까지 완료해주시면\n파일을 생성해드려요!"
                     android:textAlignment="center"
                     tools:layout_editor_absoluteX="46dp"
                     tools:layout_editor_absoluteY="69dp" />
@@ -97,6 +97,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_weight="1"
+                    android:paddingStart="8dp"
                     android:background="@drawable/spinner_background"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -223,6 +224,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
+                        android:paddingStart="8dp"
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -233,6 +235,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
+                        android:paddingStart="8dp"
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
@@ -275,6 +278,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
+                        android:paddingStart="8dp"
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -285,6 +289,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_weight="1"
+                        android:paddingStart="8dp"
                         android:background="@drawable/spinner_background"
                         tools:ignore="SpeakableTextPresentCheck" />
 

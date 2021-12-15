@@ -80,20 +80,6 @@
             android:text="개발자 정보"
             android:textSize="@dimen/header_text_size_16sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.3dp"
-            android:background="@color/black_low_emphasis"/>
-
-        <TextView
-            style="@style/body_text"
-            android:id="@+id/fragment_settings_tvVersion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="24dp"
-            android:text="어플리케이션 버전"
-            android:textSize="@dimen/header_text_size_16sp" />
 
         <TextView
             style="@style/body_text"
@@ -112,4 +98,12 @@
             android:text="오픈소스 라이센스"
             android:textSize="@dimen/header_text_size_16sp" />
     </LinearLayout>
+
+    <TextView
+        style="@style/explain_text"
+        android:text="@string/copyright"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
