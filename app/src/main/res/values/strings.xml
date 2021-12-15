@@ -7,4 +7,6 @@
     <string name="permission_denied_title">권한을 허용하지 않으면\n앱을 사용하실 수 없습니다 😥</string>
     <string name="permission_denied_title2">뒤로가기를 누르면 다시 권한을 설정할 수 있습니다</string>
     <string name="permission_denied_content">권한 설정 팝업이 뜨지 않는다면\n앱 설정에 들어가서 권한을 직접 수정해 주세요</string>
+    <string name="copyright">(C) 2021. JUHWAN JUEUN. all rights reserved.</string>
+    <string name="license">This application is (C) 2021. JUHWAN JUEUN. all rights reserved.\n\nThe following sets forth attribution notices for third party software that my contained in this application</string>
 </resources>

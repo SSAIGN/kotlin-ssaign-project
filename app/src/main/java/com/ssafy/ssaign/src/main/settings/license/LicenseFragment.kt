@@ -5,56 +5,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.ssaign.R
+import com.ssafy.ssaign.config.BaseFragment
+import com.ssafy.ssaign.databinding.FragmentLicenseBinding
+import com.ssafy.ssaign.databinding.FragmentSignConfirmBinding
+import com.ssafy.ssaign.src.main.settings.SettingsActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class LicenseFragment : BaseFragment<FragmentLicenseBinding>(FragmentLicenseBinding::bind, R.layout.fragment_license) {
+    lateinit var licenseAdapter: LicenseAdapter
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LicenseFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class LicenseFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        initView()
+        initEvent()
+    }
+
+    fun initView() {
+        licenseAdapter = LicenseAdapter(getLicenseList())
+
+        binding.fragmentLicenseRvLicense.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = licenseAdapter
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_license, container, false)
+    fun initEvent() {
+        binding.fragmentLicenseIvBack.setOnClickListener {
+            (context as SettingsActivity).finish()
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LicenseFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LicenseFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun getLicenseList(): List<License> {
+        return listOf(
+            License(
+                "Lottie for Android",
+                "https://github.com/airbnb/lottie-android",
+                "(C) 2017. Airbnb",
+                "Apache License 2.0"
+            )
+        )
     }
 }

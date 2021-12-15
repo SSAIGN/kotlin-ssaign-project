@@ -16,11 +16,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>(ActivitySettingsB
         //초기 실행화면 설정
         val currentFragment = supportFragmentManager.findFragmentById(R.id.activity_settings_fragment_container)
 
-        if(currentFragment == null){
+        if(currentFragment == null) {
             val fragment = SettingsFragment()
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.activity_settings_fragment_container,fragment)
+                .add(R.id.activity_settings_fragment_container, fragment)
                 .commit()
         }
     }
