@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="license"
+            type="com.ssafy.ssaign.src.main.settings.license.License" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/body_text"
+            android:id="@+id/list_item_license_tvTitle"
+            tools:text="Lottie for Android"
+            android:text="@{license.title}"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/explain_text"
+            android:id="@+id/list_item_license_tvLink"
+            android:layout_marginStart="16dp"
+            tools:text="https://github.com/airbnb/lottie-android"
+            android:text="@{license.link}"
+            android:autoLink="web" />
+
+        <TextView
+            style="@style/explain_text"
+            android:id="@+id/list_item_license_tvCopyright"
+            android:layout_marginStart="16dp"
+            android:text="@{license.copyright}"
+            tools:text="(C) 2017. Airbnb" />
+
+        <TextView
+            style="@style/explain_text"
+            android:id="@+id/list_item_license_tvLicense"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            tools:text="Apache License 2.0"
+            android:text="@{license.license}"
+            android:textColor="@color/black_high_emphasis" />
+    </LinearLayout>
+</layout>

@@ -43,11 +43,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
 
     private fun initEvent() {
         binding.fragmentSettingsIvBack.setOnClickListener {
-            (context as MainActivity).finish()
+            (context as SettingsActivity).finish()
         }
 
         binding.fragmentSettingsTvEditUser.setOnClickListener {
-            (context as MainActivity).onChangeFragement(1)
+            (context as SettingsActivity).onChangeFragement(2)
         }
 
         binding.fragmentSettingsTvSuggestion.setOnClickListener {
@@ -55,15 +55,15 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         }
 
         binding.fragmentSettingsTvDeveloper.setOnClickListener {
-            (context as MainActivity).onChangeFragement(3)
+            (context as SettingsActivity).onChangeFragement(3)
         }
 
         binding.fragmentSettingsTvVersion.setOnClickListener {
-            (context as MainActivity).onChangeFragement(4)
+            (context as SettingsActivity).onChangeFragement(4)
         }
 
         binding.fragmentSettingsTvLicense.setOnClickListener {
-            (context as MainActivity).onChangeFragement(5)
+            (context as SettingsActivity).onChangeFragement(5)
         }
     }
 }

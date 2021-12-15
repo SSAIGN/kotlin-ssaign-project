@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".src.main.settings.version.VersionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/fragment_version_ivBack"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_btn" />
 
-</FrameLayout>
+    <TextView
+        style="@style/appbar_text"
+        android:text="버전"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_version_ivBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_version_ivBack" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.36" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="여기에 우리 로고 나중에"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1" />
+
+    <TextView
+        style="@style/body_text"
+        android:id="@+id/textView14"
+        android:layout_marginTop="16dp"
+        android:text="새로운 버전으로 업데이트 하세요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        style="@style/explain_text"
+        android:id="@+id/fragment_version_tvVersion"
+        android:layout_marginTop="8dp"
+        android:text="현재 버전 1.0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <Button
+        android:id="@+id/fragment_version_btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="버전 1.0.1 업데이트"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_version_tvVersion" />
+
+    <TextView
+        style="@style/explain_text"
+        android:text="@string/copyright"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
