@@ -106,7 +106,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
             if(checkVaild()) {
                 if (!hasSign){
                     saveDoc()
-                    (context as MainActivity).onChangeFragement(4)
+                    (context as MainActivity).onChangeFragement(3)
                 }
                 else {
                     dialog.show()

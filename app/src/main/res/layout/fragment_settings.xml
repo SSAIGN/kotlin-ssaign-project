@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
             android:paddingVertical="24dp"
-            android:text="문의하기"
+            android:text="건의하기"
             android:textSize="@dimen/header_text_size_16sp" />
 
         <View

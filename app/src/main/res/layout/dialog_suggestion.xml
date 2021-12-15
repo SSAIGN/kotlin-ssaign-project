@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="문의사항"
+        android:text="건의사항"
         android:textAlignment="center" />
 
     <ScrollView
@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/dialog_suggestion_tvSug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
