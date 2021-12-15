@@ -71,7 +71,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                 }
 
                 if(sign != null) {
-                    draw.setSign(sign.point)
+                    draw.setSign(sign.point, "MakeReportFragment")
                 }
             }
         }

@@ -48,7 +48,6 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/noto_sans_bold"
                     android:text="SSAFY 교육지원금 서명 생성기"
                     android:textAlignment="center"

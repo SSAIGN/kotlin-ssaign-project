@@ -83,15 +83,15 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         }
 
         binding.fragmentSettingsTvDeveloper.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(3)
+            (context as SettingsActivity).onChangeFragement(2)
         }
 
         binding.fragmentSettingsTvVersion.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(4)
+            (context as SettingsActivity).onChangeFragement(3)
         }
 
         binding.fragmentSettingsTvLicense.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(5)
+            (context as SettingsActivity).onChangeFragement(4)
         }
     }
 }
