@@ -18,16 +18,17 @@ import com.ssafy.ssaign.src.main.sign.SignFragment
 import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //viewModel 설정
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         prefs = PreferenceUtil(this)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M) // TODO 마시멜로우 이하 버전에서는 문제가 있을수도 있긴한데... 솔까.. 마시멜로우를 아직도 쓰는건...좀...
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()
 
@@ -73,13 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         //정보가 없다면 -> UserInfoFragment -> 정보 기입 -> Viewmodel에 저장 -> MakeReportFramgnet -> Report 생성
         else{
-            if(currentFragment == null){
-                val fragment = UserInfoFragment()
-                supportFragmentManager
-                    .beginTransaction()
-                    .add(R.id.fragment_container,fragment)
-                    .commit()
-            }
+            onChangeFragement(1)
         }
     }
 

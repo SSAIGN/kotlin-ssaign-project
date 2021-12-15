@@ -48,7 +48,7 @@ class SignFragment : BaseFragment<FragmentSignBinding>(FragmentSignBinding::bind
                 }
 
                 job.join()
-                (context as MainActivity).onChangeFragement(2)
+                (context as MainActivity).onChangeFragement(4)
             }
         }
     }

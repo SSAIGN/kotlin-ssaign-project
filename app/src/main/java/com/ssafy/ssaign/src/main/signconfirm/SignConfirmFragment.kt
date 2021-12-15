@@ -51,7 +51,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
             }.await()
 
             if(sign != null) {
-                draw.setSign(sign.point)
+                draw.setSign(sign.point, "SignConfirmFragment")
             }
         }
 

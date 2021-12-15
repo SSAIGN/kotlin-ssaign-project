@@ -9,21 +9,21 @@
 
     <ImageView
         android:id="@+id/fragment_sign_confirm_ivCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_page_tv1"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_sign_confirm_page_tv1"
-        android:src="@drawable/ic_back_btn" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_btn" />
 
     <TextView
         android:id="@+id/fragment_sign_confirm_page_tv1"
         style="@style/appbar_text"
-        android:text="파일 확인"
+        android:text="설정"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_confirm_ivCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_sign_confirm_ivCancel" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_sign_confirm_document"

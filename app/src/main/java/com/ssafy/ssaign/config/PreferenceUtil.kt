@@ -27,4 +27,10 @@ class PreferenceUtil(context: Context) {
 
         Log.d("SSAIGN-MainActivity", getUser().toString())
     }
+
+    fun deleteUser() {
+        val editor = prefs.edit()
+        editor.clear()
+        editor.commit()
+    }
 }

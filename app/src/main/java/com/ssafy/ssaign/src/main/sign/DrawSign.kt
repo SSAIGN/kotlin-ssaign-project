@@ -66,13 +66,17 @@ class DrawSign(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
         return list;
     }
 
-    fun setSign(sign: List<Point>) {
-        val rate = dpHeight / 68
-        //Log.d("싸피", "setSign: ${rate}")
+    fun setSign(sign: List<Point>, caller: String) {
+        val rate = if(caller == "SignConfirmFragment") {
+            paint.strokeWidth = 20 / (dpHeight / 68)
+            dpHeight / 68
+        } else {
+            paint.strokeWidth = 30 / (dpHeight / 200)
+            dpHeight / 200
+        }
+
         val mapped = sign.map { it -> Point(it.x / rate, it.y / rate, it.isContinue) }
-        //Log.d("싸피", "setSign: ${dpHeight} ${dpWidth}")
         list.addAll(mapped)
-        paint.strokeWidth = 20 / rate
         invalidate()
     }
 }
