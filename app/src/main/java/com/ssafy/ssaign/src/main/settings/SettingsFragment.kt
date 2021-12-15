@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.fragment.app.commit
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
@@ -74,7 +75,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
         }
 
         binding.fragmentSettingsTvEditUser.setOnClickListener {
-            (context as SettingsActivity).onChangeFragement(2)
+            (context as SettingsActivity).finish()
         }
 
         binding.fragmentSettingsTvSuggestion.setOnClickListener {

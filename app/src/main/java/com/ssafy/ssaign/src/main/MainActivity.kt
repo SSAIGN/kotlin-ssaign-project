@@ -18,15 +18,18 @@ import com.ssafy.ssaign.src.main.sign.SignFragment
 import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
-
-    @RequiresApi(Build.VERSION_CODES.M) // TODO 마시멜로우 이하 버전에서는 문제가 있을수도 있긴한데... 솔까.. 마시멜로우를 아직도 쓰는건...좀...
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //viewModel 설정
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
         prefs = PreferenceUtil(this)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M) // TODO 마시멜로우 이하 버전에서는 문제가 있을수도 있긴한데... 솔까.. 마시멜로우를 아직도 쓰는건...좀...
+    override fun onResume() {
+        super.onResume()
 
         if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             initFragmentSetting()
@@ -85,12 +88,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             1 -> supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container, UserInfoFragment())
-                .addToBackStack(null)
                 .commit()
             2 -> supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container, MakeReportFragment())
-                .addToBackStack(null)
                 .commit()
             3 -> supportFragmentManager
                 .beginTransaction()
