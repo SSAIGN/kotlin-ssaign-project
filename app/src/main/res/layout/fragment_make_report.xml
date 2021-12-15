@@ -92,7 +92,7 @@
                 </LinearLayout>
 
                 <Spinner
-                    android:id="@+id/edu_month"
+                    android:id="@+id/fragment_make_report_spinnerEduMonth"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:layout_marginStart="16dp"
@@ -124,7 +124,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView9">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nameTv"
+                        android:id="@+id/fragment_make_report_tvName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="이름"
@@ -161,7 +161,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/submit_month"
+                        android:id="@+id/fragment_make_report_spinnerSubMonth"
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:layout_marginStart="16dp"
@@ -171,7 +171,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <Spinner
-                        android:id="@+id/submit_day"
+                        android:id="@+id/fragment_make_report_subDay"
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:layout_marginStart="16dp"
@@ -208,7 +208,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView10">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/regionTv"
+                            android:id="@+id/fragment_make_report_tvRegion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="지역"
@@ -227,7 +227,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView10">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/classNumTv"
+                            android:id="@+id/fragment_make_report_tvClassNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="반"
@@ -254,7 +254,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/allStudyCnt"
+                        android:id="@+id/fragment_make_report_spinnerAllAtt"
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:layout_marginStart="16dp"
@@ -264,7 +264,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <Spinner
-                        android:id="@+id/allClassCnt"
+                        android:id="@+id/fragment_make_report_spinnerRealAtt"
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
                         android:layout_marginStart="16dp"

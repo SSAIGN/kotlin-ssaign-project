@@ -8,6 +8,8 @@ import android.view.View
 import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
+import android.widget.TextView
 import com.ssafy.ssaign.R
 import com.ssafy.ssaign.config.ApplicationClass.Companion.db
 import com.ssafy.ssaign.config.BaseFragment
@@ -20,32 +22,53 @@ import com.ssafy.ssaign.src.main.settings.SettingsActivity
 import com.ssafy.ssaign.src.main.sign.DrawSign
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeReportBinding::bind, R.layout.fragment_make_report) {
-    lateinit var draw: DrawSign
-    var hasSign = false
+    private lateinit var draw: DrawSign
+    private var hasSign = false
     private val dataMonth = arrayOf("1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월")
     private val dataDay = arrayOf("1일","2일","3일","4일","5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일","17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","31일")
-    lateinit var dialog:Dialog
+    private lateinit var signDialog:Dialog
+
+    private lateinit var spinnerEduMonth:Spinner
+    private lateinit var spinnerSubMonth:Spinner
+    private lateinit var spinnerSubDay:Spinner
+    private lateinit var spinnerRealAtt:Spinner
+    private lateinit var spinnerAllAtt:Spinner
+    private lateinit var nameTv:TextView
+    private lateinit var regionTv:TextView
+    private lateinit var classNumTv:TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initBinding()
         initSpinner()
         initView()
         initData()
         initListener()
     }
 
+    private fun initBinding() {
+        spinnerEduMonth = binding.fragmentMakeReportSpinnerEduMonth
+        spinnerSubMonth = binding.fragmentMakeReportSpinnerSubMonth
+        spinnerSubDay = binding.fragmentMakeReportSubDay
+        spinnerAllAtt = binding.fragmentMakeReportSpinnerAllAtt
+        spinnerRealAtt = binding.fragmentMakeReportSpinnerRealAtt
+        nameTv = binding.fragmentMakeReportTvName
+        regionTv = binding.fragmentMakeReportTvRegion
+        classNumTv = binding.fragmentMakeReportTvClassNum
+    }
+
     private fun initSign() {
         if(hasSign){
             CoroutineScope(Dispatchers.Main).launch {
-                val sign = CoroutineScope(Dispatchers.Default).async {
+                val sign = withContext(CoroutineScope(Dispatchers.Default).coroutineContext) {
                     db.signDao().selectSign("1")
-                }.await()
+                }
 
                 if(sign != null) {
                     draw.setSign(sign.point)
@@ -58,46 +81,46 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         val dayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, dataDay)
         val monthAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, dataMonth)
 
-        binding.submitDay.adapter = dayAdapter
-        binding.submitMonth.adapter = monthAdapter
-        binding.eduMonth.adapter = monthAdapter
-        binding.allClassCnt.adapter = dayAdapter
-        binding.allStudyCnt.adapter = dayAdapter
+        spinnerSubDay.adapter = dayAdapter
+        spinnerSubMonth.adapter = monthAdapter
+        spinnerEduMonth.adapter = monthAdapter
+        spinnerRealAtt.adapter = dayAdapter
+        spinnerAllAtt.adapter = dayAdapter
     }
 
     private fun initView() {
         // 세로 모드
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 
-        dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_sign)
+        signDialog = Dialog(requireContext())
+        signDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        signDialog.setContentView(R.layout.dialog_sign)
 
-        dialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
+        signDialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(3)
             saveDoc()
-            dialog.hide()
+            signDialog.hide()
         }
 
-        dialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
+        signDialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(4)
             saveDoc()
-            dialog.hide()
+            signDialog.hide()
         }
 
-        draw = dialog.findViewById(R.id.dialog_draw)
+        draw = signDialog.findViewById(R.id.dialog_draw)
         draw.isValid = false
     }
 
     private fun saveDoc(){
-        val month = binding.eduMonth.selectedItem.toString().replace("월","")
-        val name = binding.nameTv.text.toString()
-        val region = binding.regionTv.text.toString()
-        val classNum = binding.classNumTv.text.toString()
-        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","")
-        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","")
-        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","")
-        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "")
+        val name = nameTv.text.toString()
+        val region = regionTv.text.toString()
+        val classNum = classNumTv.text.toString()
+        val month = spinnerEduMonth.selectedItem.toString().replace("월","")
+        val totalAttendance = spinnerAllAtt.selectedItem.toString().replace("일","")
+        val totalStudy = spinnerRealAtt.selectedItem.toString().replace("일","")
+        val submitMonth = spinnerSubMonth.selectedItem.toString().replace("월","")
+        val submitDay = spinnerSubDay.selectedItem.toString().replace("일", "")
         viewModel.enteredDocument = Document(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
     }
 
@@ -109,7 +132,7 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
                     (context as MainActivity).onChangeFragement(3)
                 }
                 else {
-                    dialog.show()
+                    signDialog.show()
                 }
             }
             else showToastMessage("기입된 정보를 다시 확인해주세요.")
@@ -121,14 +144,14 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
     }
 
     private fun checkVaild() : Boolean{
-        val month = binding.eduMonth.selectedItem.toString().replace("월","")
-        val name = binding.nameTv.text.toString()
-        val region = binding.regionTv.text.toString()
-        val classNum = binding.classNumTv.text.toString()
-        val totalAttendance = binding.allClassCnt.selectedItem.toString().replace("일","")
-        val totalStudy = binding.allStudyCnt.selectedItem.toString().replace("일","")
-        val submitMonth = binding.submitMonth.selectedItem.toString().replace("월","")
-        val submitDay = binding.submitDay.selectedItem.toString().replace("일", "")
+        val month = spinnerEduMonth.selectedItem.toString().replace("월","")
+        val name = this.nameTv.text.toString()
+        val region = regionTv.text.toString()
+        val classNum = classNumTv.text.toString()
+        val totalAttendance = spinnerAllAtt.selectedItem.toString().replace("일","")
+        val totalStudy = spinnerRealAtt.selectedItem.toString().replace("일","")
+        val submitMonth = spinnerSubMonth.selectedItem.toString().replace("월","")
+        val submitDay = spinnerSubDay.selectedItem.toString().replace("일", "")
 
         val list = listOf(month, name, region, classNum, totalAttendance, totalStudy, submitMonth, submitDay)
 
@@ -143,16 +166,14 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
         // 유저 데이터를 읽어옴 -> null 이 아니라면 자동기입
         val user = prefs.getUser()
         if(user != null){
-            with(binding) {
-                nameTv.setText(user.name)
-                regionTv.setText(user.region)
-                classNumTv.setText(user.classNum)
+            nameTv.text = user.name
+            regionTv.text = user.region
+            classNumTv.text = user.classNum
 
-                var m = SimpleDateFormat("M").format(Date()).toInt() - 2
-                if (m < 0) m = 11
+            var m = SimpleDateFormat("M").format(Date()).toInt() - 2
+            if (m < 0) m = 11
 
-                eduMonth.setSelection(m)
-            }
+            spinnerEduMonth.setSelection(m)
         }
     }
 
@@ -161,9 +182,9 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
 
         // 서명 데이터가 있는지 확인
         CoroutineScope(Dispatchers.Main).launch {
-            val sign = CoroutineScope(Dispatchers.Default).async {
+            val sign = withContext(CoroutineScope(Dispatchers.Default).coroutineContext) {
                 db.signDao().selectSign("1")
-            }.await()
+            }
             if (sign != null) {
                 hasSign = true
                 initSign()
