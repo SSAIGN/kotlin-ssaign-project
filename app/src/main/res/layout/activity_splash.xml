@@ -12,12 +12,17 @@
         android:layout_height="match_parent"
         tools:context=".src.splash.SplashActivity">
 
-        <TextView
-            style="@style/appbar_text"
-            android:text="splash screen"
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="24dp"
+            app:lottie_speed="2"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/splash"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -14,7 +14,7 @@ import com.ssafy.ssaign.src.main.MainActivity
 import com.ssafy.ssaign.src.main.permission.PermissionActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
-    private val DELAY = 500 // 원하는 값으로 설정
+    private val DELAY = 1500L // 원하는 값으로 설정
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +28,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
                 startActivity(Intent(this, PermissionActivity::class.java))
                 finish()
             }
-        }, 500)
+        }, DELAY)
     }
 }

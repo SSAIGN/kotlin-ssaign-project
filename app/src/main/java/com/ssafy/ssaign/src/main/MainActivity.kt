@@ -19,6 +19,20 @@ import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
+    val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if(isGranted) {
+                initFragmentSetting()
+            } else {
+                showToastMessage("권한 허용이 필요합니다")
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, PermissionDeniedFragment())
+                    .addToBackStack(null)
+                    .commit()
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,19 +49,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             initFragmentSetting()
         } else {
-            val permissionLauncher =
-                registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-                    if(isGranted) {
-                        initFragmentSetting()
-                    } else {
-                        showToastMessage("권한 허용이 필요합니다")
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.fragment_container, PermissionDeniedFragment())
-                            .addToBackStack(null)
-                            .commit()
-                    }
-                }
             val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
             permissionLauncher.launch(permission)
         }
