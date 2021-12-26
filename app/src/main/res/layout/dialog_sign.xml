@@ -1,48 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/spinner_background"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#f2f6f9"   />
+
+    <com.ssafy.ssaign.src.main.sign.DrawSign
+        android:id="@+id/dialog_draw"
+        android:background="#f2f6f9"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="132dp" />
+
+    <TextView
+        style="@style/appbar_text"
+        android:id="@+id/textView"
+        android:text="대표 서명 사용"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="대표 서명이 이미 있습니다.\n그대로 진행하시겠습니까?" />
+        android:text="대표 서명이 이미 있습니다.\n그대로 사용하시겠습니까?" />
 
-    <TextView
-        android:id="@+id/textView"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="대표서명"
-        android:textAlignment="center" />
-
-    <com.ssafy.ssaign.src.main.sign.DrawSign
-        android:id="@+id/dialog_draw"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="1dp"
+        android:background="#f2f6f9"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="right">
 
-        <Button
+        <TextView
+            style="@style/body_text"
             android:id="@+id/noBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textColor="@color/ssafy_blue"
+            android:gravity="right"
+            android:padding="20dp"
             android:text="아니오" />
 
-        <Button
+        <TextView
+            style="@style/body_text"
             android:id="@+id/yesBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textColor="@color/ssafy_blue"
+            android:padding="20dp"
             android:text="네" />
     </LinearLayout>
 </LinearLayout>

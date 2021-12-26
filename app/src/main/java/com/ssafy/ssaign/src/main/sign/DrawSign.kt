@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import com.ssafy.ssaign.config.ApplicationClass.Companion.dpHeight
+import com.ssafy.ssaign.config.ApplicationClass.Companion.dpWidth
 import com.ssafy.ssaign.src.main.sign.model.Point
 
 class DrawSign(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
@@ -71,8 +72,8 @@ class DrawSign(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
             paint.strokeWidth = 20 / (dpHeight / 68)
             dpHeight / 68
         } else {
-            paint.strokeWidth = 30 / (dpHeight / 200)
-            dpHeight / 200
+            paint.strokeWidth = 20 / (dpHeight / dpWidth / 0.8f)
+            dpHeight / dpWidth / 0.8f
         }
 
         val mapped = sign.map { it -> Point(it.x / rate, it.y / rate, it.isContinue) }

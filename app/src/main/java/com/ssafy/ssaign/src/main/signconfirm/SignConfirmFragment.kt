@@ -84,7 +84,7 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
     fun initEvent() {
         binding.fragmentSignConfirmIvCancel.setOnClickListener {
-
+            (context as MainActivity).onChangeFragement(2)
         }
 
         binding.fragmentSignConfirmBtnSave.setOnClickListener {
