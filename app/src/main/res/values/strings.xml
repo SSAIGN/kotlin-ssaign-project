@@ -9,4 +9,5 @@
     <string name="permission_denied_content">권한 설정 팝업이 뜨지 않는다면\n앱 설정에 들어가서 권한을 직접 수정해 주세요</string>
     <string name="copyright">(C) 2021. JUHWAN JUEUN. all rights reserved.</string>
     <string name="license">This application is (C) 2021. JUHWAN JUEUN. all rights reserved.\n\nThe following sets forth attribution notices for third party software that my contained in this application</string>
+    <string name="suggestion_hint">자유롭게 의견을 남겨주세요.\n응원 메시지를 보내주셔도 좋습니다! ❤️</string>
 </resources>

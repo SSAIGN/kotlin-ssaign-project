@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="15dp"
-    android:background="@drawable/dialog_background"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:id="@+id/dialog_suggestion_ivCancel"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_btn" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:id="@+id/dialog_suggestion_title"
+        style="@style/header_text"
+        android:padding="16dp"
         android:text="건의사항"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_suggestion_ivCancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dialog_suggestion_ivCancel" />
+
+    <TextView
+        android:id="@+id/dialog_suggestion_tvSend"
+        style="@style/body_text"
+        android:padding="16dp"
+        android:text="전송"
+        android:textColor="@color/ssafy_blue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/dialog_suggestion_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dialog_suggestion_title" />
+
+    <View
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/black_low_emphasis"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_suggestion_tvSend"/>
 
     <ScrollView
+        android:id="@+id/dialog_suggestion_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/guideline">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,35 +57,28 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/dialog_suggestion_tvSug"
+                style="@style/body_text"
+                android:id="@+id/dialog_suggestion_etSug"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:minHeight="300dp"
+                android:background="@null"
+                android:hint="@string/suggestion_hint"
+                android:padding="16dp"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/dialog_suggestion_tvCount"
+        style="@style/explain_text"
+        android:text="0 / 150"
+        android:textColor="@color/black_medium_emphasis"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_suggestion_scrollView" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/dialog_suggestion_btnCancel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="취소" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/dialog_suggestion_btnSend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="보내기" />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
