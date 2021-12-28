@@ -1,13 +1,17 @@
 package com.ssafy.ssaign.src.main.report
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -96,15 +100,23 @@ class MakeReportFragment : BaseFragment<FragmentMakeReportBinding>(FragmentMakeR
 
         signDialog = Dialog(requireContext())
         signDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val windowManager = context?.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
         signDialog.setContentView(R.layout.dialog_sign)
+        val params: ViewGroup.LayoutParams? = signDialog.window!!.attributes
+        val deviceWidth = size.x
+        params!!.width = (deviceWidth * 0.9).toInt()
+        signDialog.window!!.attributes = params as WindowManager.LayoutParams
 
-        signDialog.findViewById<Button>(R.id.noBtn).setOnClickListener {
+        signDialog.findViewById<TextView>(R.id.noBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(3)
             saveDoc()
             signDialog.hide()
         }
 
-        signDialog.findViewById<Button>(R.id.yesBtn).setOnClickListener {
+        signDialog.findViewById<TextView>(R.id.yesBtn).setOnClickListener {
             (context as MainActivity).onChangeFragement(4)
             saveDoc()
             signDialog.hide()

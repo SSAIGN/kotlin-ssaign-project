@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.ssafy.ssaign"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -87,4 +87,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    // Lottie
+    implementation 'com.airbnb.android:lottie:4.2.2'
 }

@@ -84,11 +84,11 @@ class SignConfirmFragment : BaseFragment<FragmentSignConfirmBinding>(FragmentSig
 
     fun initEvent() {
         binding.fragmentSignConfirmIvCancel.setOnClickListener {
-
+            (context as MainActivity).onChangeFragement(2)
         }
 
         binding.fragmentSignConfirmBtnSave.setOnClickListener {
-            showToastMessage("캡쳐 성공")
+            showToastMessage("사진이 저장되었습니다.")
             val sdf = SimpleDateFormat("yyyyMMddHHmmss") //년,월,일,시간 포멧 설정
             val time = Date() //파일명 중복 방지를 위해 사용될 현재시간
             val current_time = sdf.format(time) //String형 변수에 저장
