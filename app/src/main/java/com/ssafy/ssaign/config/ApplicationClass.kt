@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatDelegate
 import com.ssafy.ssaign.src.main.sign.db.SignDatabase
 import com.ssafy.ssaign.util.SharedPreferencesUtil
 
@@ -25,6 +26,9 @@ class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         sSharedPreferences = SharedPreferencesUtil(applicationContext)
         db = SignDatabase.getInstance(applicationContext)!!
         val windowManager = applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager

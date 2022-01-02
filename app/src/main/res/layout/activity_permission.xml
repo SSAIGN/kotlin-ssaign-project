@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".src.main.permission.PermissionActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="여기에 나중에 대충 로고 같은거.."
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="wrap_content"
@@ -78,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="다음"
+        android:fontFamily="@font/noto_sans_bold"
         android:textSize="@dimen/header_text_size_16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

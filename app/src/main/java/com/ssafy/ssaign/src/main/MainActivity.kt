@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.ssafy.ssaign.config.BaseActivity
 import com.ssafy.ssaign.R
@@ -18,10 +19,14 @@ import com.ssafy.ssaign.src.main.sign.SignFragment
 import com.ssafy.ssaign.src.main.signconfirm.SignConfirmFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    private val permissions = arrayOf(
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE
+    )
 
-    val permissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if(isGranted) {
+    private val askMultiplePermissionsLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { it ->
+            if(it.all { permission -> permission.value == true }) {
                 initFragmentSetting()
             } else {
                 showToastMessage("권한 허용이 필요합니다")
@@ -32,6 +37,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     .commit()
             }
         }
+
+//    val permissionLauncher =
+//        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+//            if(isGranted) {
+//                initFragmentSetting()
+//            } else {
+//                showToastMessage("권한 허용이 필요합니다")
+//                supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.fragment_container, PermissionDeniedFragment())
+//                    .addToBackStack(null)
+//                    .commit()
+//            }
+//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +65,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onResume() {
         super.onResume()
 
+//        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+//            initFragmentSetting()
+//        } else {
+//            val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            permissionLauncher.launch(permission)
+//        }
+
         if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             initFragmentSetting()
-        } else {
-            val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
-            permissionLauncher.launch(permission)
+        }
+        else if(!checkPermission(permissions)) {
+            askMultiplePermissionsLauncher.launch(permissions)
+        }
+    }
+
+    private fun checkPermission(permissions: Array<String>): Boolean {
+        return permissions.all {
+            ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
         }
     }
 
