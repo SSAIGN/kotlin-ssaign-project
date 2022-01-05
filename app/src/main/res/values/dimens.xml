@@ -8,6 +8,6 @@
     <dimen name="appbar_text_size_18sp">18sp</dimen>
     <dimen name="header_text_size_16sp">16sp</dimen>
     <dimen name="body_text_size_14sp">14sp</dimen>
-    <dimen name="document_text_size_12sp">12sp</dimen>
+    <dimen name="document_text_size_12sp">11sp</dimen>
     <dimen name="explain_text_size_10sp">10sp</dimen>
 </resources>

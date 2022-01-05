@@ -44,7 +44,31 @@ class LicenseFragment : BaseFragment<FragmentLicenseBinding>(FragmentLicenseBind
                 "https://github.com/airbnb/lottie-android",
                 "(C) 2017. Airbnb",
                 "Apache License 2.0"
-            )
+            ),
+            License(
+                "Jsoup",
+                "https://github.com/jhy/jsoup",
+                "(C) 2009 Jonathan Hedley",
+                "MIT License"
+            ),
+            License(
+                "Glide",
+                "https://github.com/bumptech/glide",
+                "(C) 2014 Google",
+                "BSD, part MIT and Apache 2.0"
+            ),
+            License(
+                "Lottie Signature Animation",
+                "https://assets4.lottiefiles.com/packages/lf20_9dmzmwdm.json",
+                "(C) 2021 Antoine Wentzler",
+                "Apache License 2.0"
+            ),
+            License(
+                "함초롬체",
+                "https://www.hancom.com/cs_center/csDownload.do",
+                "(C) 2010. Hancom",
+                "https://info.kcopa.or.kr/license/747"
+            ),
         )
     }
 }

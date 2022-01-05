@@ -44,9 +44,10 @@
         <TextView
             style="@style/body_text"
             android:id="@+id/textView6"
-            android:text="입력한 정보를 통해 교육지원금 파일을 생성해 드릴게요!\n추후, 내용을 수정할 수 있으니 걱정하지 마세요!"
+            android:text="입력한 정보를 통해 교육지원금 파일을 생성해 드릴게요!\n추후에도 정보를 수정할 수 있으니 걱정하지 마세요!"
             android:textAlignment="center"
             android:textColor="@color/black_low_emphasis"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
