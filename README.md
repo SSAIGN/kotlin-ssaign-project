@@ -47,9 +47,9 @@
   <img src="/images/banner.png">
 </div>
 <div>
-  <img src="/images/screenshot_3.png" width=300>
-  <img src="/images/screenshot_4.png" width=300>
-  <img src="/images/screenshot_5.png" width=300>
+  <img src="/images/screenshot_3.png" width=250>
+  <img src="/images/screenshot_4.png" width=250>
+  <img src="/images/screenshot_5.png" width=250>
 </div>
 <div>
   <img src="/images/screenshot_1.png" width=300>
