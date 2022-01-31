@@ -5,7 +5,7 @@
 </div>
  
  
- ## **Member**
+ ## **Member** 🧡
 
 <table align="center" style="font-weight : bold">
     <tr>
@@ -26,33 +26,43 @@
     </tr>
 </table>
 
-## Samsung Software Academy For Youth 🧡 (Description)
-해당 앱은 삼성 청년 소프트웨어 아카데미(SSAFY) 교육지원금 서명 앱을 위한 어플리케이션 입니다.
-매달 교육 서명 지원금을 휴대폰 어플로 쉽게 관리하여 생성할 수 있도록 돕고, 쾌적한 환경을 제공합니다.
+## Description
+> <h3><font color="red">프로젝트 기획 배경</font></h3>
 
-## Installation
-좌측 release를 확인하셔서 PlayStore에서 앱을 다운 받거나, apk를 다운받아 실행시켜주세요.
+삼성 청년 소프트웨어 아카데미 수강생들은 한 달에 한 번씩 교육지원금 문서를 제출해야 합니다. <br>
+문서를 작성하고 서명을 문서에 첨부하여 저장하는 이런 **`매달 반복되는 과정을 앱 서비스로 해결`** 하고자 했습니다. <br>
+교육과정을 이수하며 배운 지식을 바탕으로 저희가 실제로 사용할 서비스를 만들고 싶었고 <br>
+다른 수강생들에게 많은 도움이 되겠다 생각하여 개발을 하게 되었습니다. <br>
 
-## Application UI Proposal
-<table>
-  <tr>
-    <td> <img src="/images/01_Main.png" width="300" height="500"/><br>Main Fragment </td>     
-    <td> <img src="./images/02_최초실행.png" width="300" height="500"/><br>UserInfo Fragment </td>
-  </tr>
-  <tr>
-    <td> <img src="./images/03_서명창.png" width="300" height="500"/><br>MakeReport Fragment </td>
-    <td> <img src="./images/04_서명%20불러오기.png" width="300" height="500"/><br>MakeReport Fragment(SignList) </td>
-  </tr>
-</table>
+> <h3><font color="red">주요 서비스</font></h3>
 
-## Example
+<ul>
+	<li>✔️사용자의 기본 정보를 스마트폰에 저장하여 <strong>문서 자동 완성</strong></li>
+  <li>✔️스마트폰 화면에 서명하여 내 <strong>서명 정보 저장 및 불러오기 기능</strong></li>
+  <li>✔️바로 제출할 수 있도록 양식에 맞는 <strong>문서 캡쳐 파일 생성</strong></li>
+</ul>
+
+## App Screenshot
+<div>
+  <img src="/images/banner.png">
+</div>
+<div>
+  <img src="/images/screenshot_3.png" width=300>
+  <img src="/images/screenshot_4.png" width=300>
+  <img src="/images/screenshot_5.png" width=300>
+</div>
+<div>
+  <img src="/images/screenshot_1.png" width=300>
+  <img src="/images/screenshot_2.png" width=300>
+</div>
 
 ## Update List
-- version 1.0 ) 
+- version 1.0.2
 
 ## Information
-
-## For Contributor
+이 앱은 문서 보안상의 이유로 1.0.2 버전을 이후로 플레이스토어에서 내리게 되었습니다. <br>
+아쉽지만 더 좋은 앱으로 찾아오도록 하겠습니다. <br>
+그동안 이용해주셔서 감사합니다! 😄
 
 ## License Information
 - Choi JuEun [@JueunDev](https://github.com/Jueundev)
